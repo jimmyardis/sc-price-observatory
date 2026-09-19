@@ -1,0 +1,61 @@
+item_id,concept,label,cpi_stratum,norm_unit,tier,search_terms,brand_hint,active
+flour_ap_store,flour_ap,All-purpose flour,FA01,lb,store_brand,all purpose flour,,true
+cereal_oats_store,cereal_oats,Toasted oat cereal,FA02,oz,store_brand,toasted oats cereal,,true
+cereal_oats_national,cereal_oats,Toasted oat cereal (Cheerios),FA02,oz,national_brand,cheerios original,Cheerios,true
+rice_white_store,rice_white,Long grain white rice,FA03,lb,store_brand,long grain white rice,,true
+spaghetti_store,spaghetti,Spaghetti pasta,FA03,lb,store_brand,spaghetti pasta,,true
+spaghetti_national,spaghetti,Spaghetti pasta (Barilla),FA03,lb,national_brand,barilla spaghetti,Barilla,true
+bread_white_store,bread_white,White sandwich bread,FB01,oz,store_brand,white sandwich bread,,true
+bread_white_national,bread_white,White sandwich bread (Sunbeam/Nature's Own),FB01,oz,national_brand,nature's own white bread,Nature's Own,true
+ground_beef_8020,ground_beef,Ground beef 80/20,FC01,lb,unbranded,ground beef 80 lean,,true
+beef_sirloin_steak,beef_sirloin,Top sirloin steak,FC03,lb,unbranded,top sirloin steak beef,,true
+bacon_store,bacon,"Bacon, sliced",FD01,oz,store_brand,bacon,,true
+bacon_national,bacon,"Bacon, sliced (Smithfield)",FD01,oz,national_brand,smithfield bacon,Smithfield,true
+pork_chops_bone_in,pork_chops,Bone-in pork chops,FD03,lb,unbranded,bone in pork chops,,true
+hot_dogs_store,hot_dogs,Beef franks,FE01,oz,store_brand,beef hot dogs,,true
+hot_dogs_national,hot_dogs,Beef franks (Ball Park),FE01,oz,national_brand,ball park beef franks,Ball Park,true
+lunchmeat_turkey_store,lunchmeat_turkey,Sliced turkey lunchmeat,FE02,oz,store_brand,sliced turkey breast lunch meat,,true
+chicken_breast_boneless,chicken_breast,Boneless skinless chicken breast,FF01,lb,unbranded,boneless skinless chicken breast,,true
+chicken_whole,chicken_whole,Whole fryer chicken,FF01,lb,unbranded,whole chicken,,true
+ground_turkey,ground_turkey,Ground turkey,FF02,lb,unbranded,ground turkey,,true
+tuna_canned_store,tuna_canned,Chunk light tuna in water,FG02,oz,store_brand,chunk light tuna in water,,true
+tuna_canned_national,tuna_canned,Chunk light tuna in water (StarKist),FG02,oz,national_brand,starkist chunk light tuna,StarKist,true
+eggs_large_dozen,eggs_large,Large grade A eggs,FH01,dozen,store_brand,large eggs,,true
+milk_whole_store,milk_whole,"Whole milk, gallon",FJ01,fl_oz,store_brand,whole milk gallon,,true
+cheddar_block_store,cheddar,Cheddar cheese block,FJ02,oz,store_brand,sharp cheddar cheese block,,true
+cheddar_block_national,cheddar,Cheddar cheese block (Kraft/Tillamook),FJ02,oz,national_brand,tillamook sharp cheddar block,Tillamook,true
+ice_cream_store,ice_cream,Vanilla ice cream,FJ03,oz,store_brand,vanilla ice cream carton,,true
+ice_cream_national,ice_cream,Vanilla ice cream (Tillamook),FJ03,oz,national_brand,vanilla ice cream tub,Tillamook,true
+yogurt_store,yogurt,"Plain yogurt, quart",FJ04,oz,store_brand,plain yogurt 32 oz,,true
+yogurt_national,yogurt,"Plain yogurt, quart (Dannon)",FJ04,oz,national_brand,dannon plain yogurt 32 oz,Dannon,true
+apples_gala,apples,Gala apples,FK01,lb,unbranded,gala apples,,true
+bananas,bananas,Bananas,FK02,lb,unbranded,bananas,,true
+oranges_navel,oranges,Navel oranges,FK03,lb,unbranded,navel oranges,,true
+strawberries_1lb,strawberries,"Strawberries, 1 lb",FK04,lb,unbranded,strawberries 1 lb,,true
+potatoes_russet,potatoes,"Russet potatoes, bag",FL01,lb,unbranded,russet potatoes 5 lb bag,,true
+lettuce_iceberg,lettuce,"Iceberg lettuce, head",FL02,count,unbranded,iceberg lettuce,,true
+tomatoes_roma,tomatoes,Roma tomatoes,FL03,lb,unbranded,roma tomato fresh,,true
+onions_yellow,onions,Yellow onions,FL04,lb,unbranded,yellow onions,,true
+carrots_1lb,carrots,"Carrots, 1 lb bag",FL04,lb,unbranded,carrots whole fresh,,true
+green_beans_canned_store,green_beans_canned,"Cut green beans, canned",FM01,oz,store_brand,cut green beans canned,,true
+green_beans_canned_national,green_beans_canned,"Cut green beans, canned (Del Monte)",FM01,oz,national_brand,del monte cut green beans,Del Monte,true
+broccoli_frozen_store,broccoli_frozen,Frozen broccoli florets,FM02,oz,store_brand,frozen broccoli florets,,true
+broccoli_frozen_national,broccoli_frozen,Frozen broccoli florets (Birds Eye),FM02,oz,national_brand,birds eye broccoli florets,Birds Eye,true
+pinto_beans_dry,pinto_beans_dry,Dry pinto beans,FM03,lb,store_brand,dry pinto beans,,true
+cola_2l_store,cola_2l,"Cola, 2 liter",FN01,fl_oz,store_brand,cola 2 liter,,true
+cola_2l_national,cola_2l,"Cola, 2 liter (Coca-Cola)",FN01,fl_oz,national_brand,coca-cola 2 liter,Coca-Cola,true
+orange_juice_store,orange_juice,"Orange juice, not from concentrate",FN02,fl_oz,store_brand,orange juice not from concentrate,,true
+orange_juice_national,orange_juice,Orange juice (Tropicana),FN02,fl_oz,national_brand,tropicana orange juice,Tropicana,true
+coffee_ground_store,coffee_ground,"Ground coffee, medium roast",FP01,oz,store_brand,ground coffee medium roast,,true
+coffee_ground_national,coffee_ground,Ground coffee (Folgers Classic Roast),FP01,oz,national_brand,folgers classic roast ground coffee,Folgers,true
+sugar_granulated,sugar,Granulated sugar,FR01,lb,store_brand,granulated sugar 4 lb,,true
+butter_store,butter,"Salted butter, 1 lb",FS01,oz,store_brand,salted butter sticks,,true
+butter_national,butter,Salted butter (Land O Lakes),FS01,oz,national_brand,land o lakes butter,Land O Lakes,true
+mayonnaise_dukes,mayonnaise,Mayonnaise (Duke's),FS02,fl_oz,national_brand,duke's mayonnaise,Duke's,true
+peanut_butter_store,peanut_butter,Creamy peanut butter,FS03,oz,store_brand,creamy peanut butter,,true
+peanut_butter_national,peanut_butter,Creamy peanut butter (Jif),FS03,oz,national_brand,jif creamy peanut butter,Jif,true
+vegetable_oil_store,vegetable_oil,Vegetable oil,FS03,fl_oz,store_brand,vegetable oil 48 oz,,true
+soup_chicken_noodle_store,soup_chicken_noodle,Condensed chicken noodle soup,FT01,oz,store_brand,condensed chicken noodle soup,,true
+soup_chicken_noodle_national,soup_chicken_noodle,Condensed chicken noodle soup (Campbell's),FT01,oz,national_brand,campbell's chicken noodle soup,Campbell's,true
+potato_chips_lays,potato_chips,Potato chips (Lay's Classic),FT03,oz,national_brand,lay's classic potato chips,Lay's,true
+ketchup_heinz,ketchup,Tomato ketchup (Heinz),FT04,oz,national_brand,heinz tomato ketchup,Heinz,true

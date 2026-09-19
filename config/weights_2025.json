@@ -1,0 +1,229 @@
+{
+ "weights_version": "2025-draft",
+ "verified": false,
+ "source": "PLACEHOLDER. Group totals are the approximate food-at-home shares from spec section 4; each group's share is split evenly across the strata the basket covers. Replace relative_importance with the BLS CPI-U relative importance (December 2025, U.S. city average) for each item stratum from https://www.bls.gov/cpi/tables/relative-importance/ and set verified=true. Stratum codes follow the BLS item-strata naming (SEFxxx without the 'SE' prefix) and must be checked against that table too.",
+ "units": "relative importance points; normalized at compute time over strata with data",
+ "groups": {
+  "cereals_bakery": {
+   "label": "Cereals and bakery products",
+   "approx_share": 13
+  },
+  "meats_poultry_fish_eggs": {
+   "label": "Meats, poultry, fish, and eggs",
+   "approx_share": 23
+  },
+  "dairy": {
+   "label": "Dairy and related products",
+   "approx_share": 11
+  },
+  "fruits_vegetables": {
+   "label": "Fruits and vegetables",
+   "approx_share": 19
+  },
+  "beverages": {
+   "label": "Nonalcoholic beverages and beverage materials",
+   "approx_share": 10
+  },
+  "other_food_home": {
+   "label": "Other food at home",
+   "approx_share": 24
+  }
+ },
+ "strata": {
+  "FA01": {
+   "label": "Flour and prepared flour mixes",
+   "group": "cereals_bakery",
+   "relative_importance": 3.25
+  },
+  "FA02": {
+   "label": "Breakfast cereal",
+   "group": "cereals_bakery",
+   "relative_importance": 3.25
+  },
+  "FA03": {
+   "label": "Rice, pasta, cornmeal",
+   "group": "cereals_bakery",
+   "relative_importance": 3.25
+  },
+  "FB01": {
+   "label": "Bread",
+   "group": "cereals_bakery",
+   "relative_importance": 3.25
+  },
+  "FC01": {
+   "label": "Uncooked ground beef",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FC03": {
+   "label": "Uncooked beef steaks",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FD01": {
+   "label": "Bacon, breakfast sausage, and related products",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FD03": {
+   "label": "Pork chops",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FE01": {
+   "label": "Frankfurters",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FE02": {
+   "label": "Lunchmeats",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FF01": {
+   "label": "Chicken",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FF02": {
+   "label": "Other uncooked poultry including turkey",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FG02": {
+   "label": "Processed fish and seafood",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FH01": {
+   "label": "Eggs",
+   "group": "meats_poultry_fish_eggs",
+   "relative_importance": 2.3
+  },
+  "FJ01": {
+   "label": "Milk",
+   "group": "dairy",
+   "relative_importance": 2.75
+  },
+  "FJ02": {
+   "label": "Cheese and cheese products",
+   "group": "dairy",
+   "relative_importance": 2.75
+  },
+  "FJ03": {
+   "label": "Ice cream and related products",
+   "group": "dairy",
+   "relative_importance": 2.75
+  },
+  "FJ04": {
+   "label": "Other dairy and related products",
+   "group": "dairy",
+   "relative_importance": 2.75
+  },
+  "FK01": {
+   "label": "Apples",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FK02": {
+   "label": "Bananas",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FK03": {
+   "label": "Citrus fruits",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FK04": {
+   "label": "Other fresh fruits",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FL01": {
+   "label": "Potatoes",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FL02": {
+   "label": "Lettuce",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FL03": {
+   "label": "Tomatoes",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FL04": {
+   "label": "Other fresh vegetables",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FM01": {
+   "label": "Canned fruits and vegetables",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FM02": {
+   "label": "Frozen fruits and vegetables",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FM03": {
+   "label": "Other processed fruits and vegetables including dried",
+   "group": "fruits_vegetables",
+   "relative_importance": 1.7273
+  },
+  "FN01": {
+   "label": "Carbonated drinks",
+   "group": "beverages",
+   "relative_importance": 3.3333
+  },
+  "FN02": {
+   "label": "Nonfrozen noncarbonated juices and drinks",
+   "group": "beverages",
+   "relative_importance": 3.3333
+  },
+  "FP01": {
+   "label": "Coffee",
+   "group": "beverages",
+   "relative_importance": 3.3333
+  },
+  "FR01": {
+   "label": "Sugar and sugar substitutes",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FS01": {
+   "label": "Butter and margarine",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FS02": {
+   "label": "Salad dressing",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FS03": {
+   "label": "Other fats and oils including peanut butter",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FT01": {
+   "label": "Soups",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FT03": {
+   "label": "Snacks",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  },
+  "FT04": {
+   "label": "Spices, seasonings, condiments, sauces",
+   "group": "other_food_home",
+   "relative_importance": 3.4286
+  }
+ }
+}

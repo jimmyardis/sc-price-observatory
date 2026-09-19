@@ -1,0 +1,61 @@
+banner,retailer_sku,item_id,pack_size,count_rule,confidence,mapped_by,mapped_at,retailer_label
+kroger,0001111086116,flour_ap_store,5.0,,exact,claude-draft,2026-09-17,Kroger® Unbleached Enriched All Purpose Flour
+kroger,0001111002278,cereal_oats_store,20.0,,exact,claude-draft,2026-09-17,Kroger® Toasted Oats Cereal Giant Size
+kroger,0001600017003,cereal_oats_national,18,,exact,claude-draft,2026-09-17,General Mills Cheerios™ Family Size Cereal
+kroger,0001111089875,rice_white_store,2.0,,exact,claude-draft,2026-09-17,Kroger® Enriched Long Grain White Rice
+kroger,0001111085004,spaghetti_store,1.0,,exact,claude-draft,2026-09-17,Kroger® Spaghetti
+kroger,0007680828008,spaghetti_national,1.0,,exact,claude-draft,2026-09-17,"Barilla Spaghetti Pasta, Quality Non-GMO and Kosher Certified Pasta"
+kroger,0001111008486,bread_white_store,20.0,,exact,claude-draft,2026-09-17,Kroger® White Sandwich Bread
+kroger,0007225002074,bread_white_national,22.0,,close,claude-draft,2026-09-17,"Nature's Own Perfectly Crafted White Bread, Thick Sliced Non-GMO Sandwich Bread, 22 oz Loaf"
+kroger,0001111096972,ground_beef_8020,1,,exact,claude-draft,2026-09-17,Kroger® 80/20 Ground Beef Tray 1 LB
+kroger,0020128650000,beef_sirloin_steak,1.0,,close,claude-draft,2026-09-17,Choice Top Sirloin Beef Steak Family Pack
+kroger,0001111097209,bacon_store,16.0,,close,claude-draft,2026-09-17,Kroger® Thick Cut Naturally Hardwood Smoked Bacon
+kroger,0007080004118,bacon_national,16.0,,exact,claude-draft,2026-09-17,Smithfield® Hometown Original Bacon
+kroger,0001111066226,pork_chops_bone_in,2.25,,close,claude-draft,2026-09-17,Kroger® Bone-In Pork Loin Chops
+kroger,0001111000637,hot_dogs_store,12,total,close,claude-draft,2026-09-17,Private Selection® All Beef Hot Dogs
+kroger,0005450019329,hot_dogs_national,15.0,,exact,claude-draft,2026-09-17,Ball Park Bun Length Beef Hot Dogs
+kroger,0001111085080,lunchmeat_turkey_store,9.0,,close,claude-draft,2026-09-17,Kroger® Turkey Breast Oven Roasted Deli Thin Sliced
+kroger,0028334900000,chicken_breast_boneless,1,,exact,claude-draft,2026-09-17,Heritage Farm® Boneless Skinless Chicken Breasts
+kroger,0028334850000,chicken_whole,1.0,,close,claude-draft,2026-09-17,Heritage Farm® Bone In Skin On Whole Young Chicken
+kroger,0001111097993,ground_turkey,3.0,,close,claude-draft,2026-09-17,Kroger® 85/15 Fresh Ground Turkey Tray 3 LB
+kroger,0001111089084,tuna_canned_store,5.0,,exact,claude-draft,2026-09-17,Kroger® Wild Caught Chunk Light Tuna in Water
+kroger,0008000000673,tuna_canned_national,5.0,,exact,claude-draft,2026-09-17,StarKist® Chunk Light Tuna in Water Can
+kroger,0001111060903,eggs_large_dozen,1.0,,exact,claude-draft,2026-09-17,Kroger® Grade A Large White Eggs
+kroger,0001111040101,milk_whole_store,128.0,,exact,claude-draft,2026-09-17,Kroger® Vitamin D Whole Milk Gallon
+kroger,0001111058627,cheddar_block_store,8.0,,exact,claude-draft,2026-09-17,Kroger® Sharp Cheddar Block Cheese
+kroger,0007283000552,cheddar_block_national,8.0,,exact,claude-draft,2026-09-17,Tillamook® Aged Sharp Cheddar Block Cheese
+kroger,0001111050729,ice_cream_store,48,,exact,claude-draft,2026-09-17,Kroger® 1883 Vanilla Ice Cream Tub
+kroger,0007283008109,ice_cream_national,48,,close,claude-draft,2026-09-17,Tillamook Old-Fashioned Vanilla Ice Cream Tub
+kroger,0001111013600,yogurt_store,32.0,,close,claude-draft,2026-09-17,Kroger® Plain Whole Milk Greek Yogurt Cultured Dairy Blend Tub
+kroger,0003663200282,yogurt_national,32.0,,exact,claude-draft,2026-09-17,Dannon Plain Whole Milk Yogurt Tub
+kroger,0001111091825,apples_gala,3.0,,close,claude-draft,2026-09-17,Kroger® Gala Apples – 3 Pound Bag
+kroger,0000000004011,bananas,1.0,,exact,claude-draft,2026-09-17,Fresh Bunch of Bananas – 5-7 Bananas
+kroger,0001111063563,oranges_navel,4.0,,close,claude-draft,2026-09-17,Kroger® Fresh Navel Oranges Bag
+kroger,0003338320027,strawberries_1lb,1.0,,exact,claude-draft,2026-09-17,Fresh Strawberries – 1 LB Clamshell
+kroger,0001111091760,potatoes_russet,5.0,,close,claude-draft,2026-09-17,Russet Potatoes Bag
+kroger,0000000004061,lettuce_iceberg,1.0,,exact,claude-draft,2026-09-17,Wrapped Iceberg Lettuce
+kroger,0000000004087,tomatoes_roma,1.0,,exact,claude-draft,2026-09-17,Fresh Roma Tomato
+kroger,0000000004093,onions_yellow,1.0,,close,claude-draft,2026-09-17,Jumbo Yellow Onions
+kroger,0001111091622,carrots_1lb,2.0,,close,claude-draft,2026-09-17,Kroger® Whole Carrots
+kroger,0001111011473,green_beans_canned_store,15.25,,exact,claude-draft,2026-09-17,KROGER CUT GREEN BEANS
+kroger,0002400025071,green_beans_canned_national,14.5,,close,claude-draft,2026-09-17,Del Monte Blue Lake Farmhouse Cut Green Beans
+kroger,0001111012841,broccoli_frozen_store,12.0,,exact,claude-draft,2026-09-17,Kroger® Frozen Broccoli Florets
+kroger,0001450002183,broccoli_frozen_national,10.8,,close,claude-draft,2026-09-17,"Birds Eye Steamfresh Broccoli Florets, Frozen Vegetables"
+kroger,0001111089681,pinto_beans_dry,1.0,,exact,claude-draft,2026-09-17,Kroger® Pinto Beans
+kroger,0001111049180,cola_2l_store,67.628,,exact,claude-draft,2026-09-17,Big K® Cola Soda Bottle
+kroger,0004900005010,cola_2l_national,67.628,,exact,claude-draft,2026-09-17,Coca-Cola® Soda Bottle
+kroger,0001111015687,orange_juice_store,46,,exact,claude-draft,2026-09-17,Kroger® Premium Orange Juice Pulp Free
+kroger,0004850020571,orange_juice_national,46.0,,exact,claude-draft,2026-09-17,Tropicana Pure Premium Original No Pulp No Sugar Added 100% Orange Juice
+kroger,0001111014953,coffee_ground_store,29.0,,close,claude-draft,2026-09-17,Kroger® Classic Blend Medium Roast Ground Coffee
+kroger,0002550030407,coffee_ground_national,25.9,,exact,claude-draft,2026-09-17,"Folgers Classic Roast Ground Coffee, Medium Roast"
+kroger,0001111088318,sugar_granulated,4.0,,exact,claude-draft,2026-09-17,Kroger® Pure Cane Granulated Sugar
+kroger,0001111089301,butter_store,16.0,,exact,claude-draft,2026-09-17,Kroger® Salted Butter Sticks
+kroger,0003450015136,butter_national,16,,exact,claude-draft,2026-09-17,Land O Lakes Salted Butter Sticks
+kroger,0005250005005,mayonnaise_dukes,30.0,,exact,claude-draft,2026-09-17,"Duke's® Real Mayonnaise, 30 oz Jar, Smooth & Creamy Mayo"
+kroger,0001111001618,peanut_butter_store,16.0,,exact,claude-draft,2026-09-17,Creamy Peanut Butter - Kroger - 16 Oz
+kroger,0005150025516,peanut_butter_national,16.0,,exact,claude-draft,2026-09-17,Jif Creamy Peanut Butter
+kroger,0001111085605,vegetable_oil_store,48.0,,exact,claude-draft,2026-09-17,Kroger® 100% Pure Vegetable Oil
+kroger,0001111016039,soup_chicken_noodle_store,10.5,,exact,claude-draft,2026-09-17,Kroger Condensed Chicken Noodle Soup
+kroger,0005100001251,soup_chicken_noodle_national,10.75,,exact,claude-draft,2026-09-17,"Campbell's® Condensed Chicken Noodle Soup, 10.75 oz Can"
+kroger,0002840019914,potato_chips_lays,8.0,,exact,claude-draft,2026-09-17,Lay's® Classic Potato Chips
+kroger,0001300000605,ketchup_heinz,32.0,,exact,claude-draft,2026-09-17,Heinz Tomato Ketchup

@@ -1,0 +1,311 @@
+{
+ "_note": "County FIPS are official. Region assignment is a DRAFT judgment call (spec names four regions but not their membership); York/Chester/Lancaster placed in Midlands, Sumter/Clarendon/Georgetown in Pee Dee, Allendale in Lowcountry. Review before Phase 1.",
+ "geo": [
+  {
+   "geo_id": "45",
+   "geo_type": "state",
+   "name": "South Carolina",
+   "parent_geo_id": null
+  },
+  {
+   "geo_id": "region:upstate",
+   "geo_type": "region",
+   "name": "Upstate",
+   "parent_geo_id": "45"
+  },
+  {
+   "geo_id": "region:midlands",
+   "geo_type": "region",
+   "name": "Midlands",
+   "parent_geo_id": "45"
+  },
+  {
+   "geo_id": "region:pee_dee",
+   "geo_type": "region",
+   "name": "Pee Dee",
+   "parent_geo_id": "45"
+  },
+  {
+   "geo_id": "region:lowcountry",
+   "geo_type": "region",
+   "name": "Lowcountry",
+   "parent_geo_id": "45"
+  },
+  {
+   "geo_id": "45001",
+   "geo_type": "county",
+   "name": "Abbeville County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45003",
+   "geo_type": "county",
+   "name": "Aiken County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45005",
+   "geo_type": "county",
+   "name": "Allendale County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45007",
+   "geo_type": "county",
+   "name": "Anderson County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45009",
+   "geo_type": "county",
+   "name": "Bamberg County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45011",
+   "geo_type": "county",
+   "name": "Barnwell County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45013",
+   "geo_type": "county",
+   "name": "Beaufort County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45015",
+   "geo_type": "county",
+   "name": "Berkeley County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45017",
+   "geo_type": "county",
+   "name": "Calhoun County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45019",
+   "geo_type": "county",
+   "name": "Charleston County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45021",
+   "geo_type": "county",
+   "name": "Cherokee County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45023",
+   "geo_type": "county",
+   "name": "Chester County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45025",
+   "geo_type": "county",
+   "name": "Chesterfield County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45027",
+   "geo_type": "county",
+   "name": "Clarendon County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45029",
+   "geo_type": "county",
+   "name": "Colleton County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45031",
+   "geo_type": "county",
+   "name": "Darlington County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45033",
+   "geo_type": "county",
+   "name": "Dillon County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45035",
+   "geo_type": "county",
+   "name": "Dorchester County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45037",
+   "geo_type": "county",
+   "name": "Edgefield County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45039",
+   "geo_type": "county",
+   "name": "Fairfield County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45041",
+   "geo_type": "county",
+   "name": "Florence County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45043",
+   "geo_type": "county",
+   "name": "Georgetown County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45045",
+   "geo_type": "county",
+   "name": "Greenville County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45047",
+   "geo_type": "county",
+   "name": "Greenwood County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45049",
+   "geo_type": "county",
+   "name": "Hampton County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45051",
+   "geo_type": "county",
+   "name": "Horry County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45053",
+   "geo_type": "county",
+   "name": "Jasper County",
+   "parent_geo_id": "region:lowcountry"
+  },
+  {
+   "geo_id": "45055",
+   "geo_type": "county",
+   "name": "Kershaw County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45057",
+   "geo_type": "county",
+   "name": "Lancaster County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45059",
+   "geo_type": "county",
+   "name": "Laurens County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45061",
+   "geo_type": "county",
+   "name": "Lee County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45063",
+   "geo_type": "county",
+   "name": "Lexington County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45065",
+   "geo_type": "county",
+   "name": "McCormick County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45067",
+   "geo_type": "county",
+   "name": "Marion County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45069",
+   "geo_type": "county",
+   "name": "Marlboro County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45071",
+   "geo_type": "county",
+   "name": "Newberry County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45073",
+   "geo_type": "county",
+   "name": "Oconee County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45075",
+   "geo_type": "county",
+   "name": "Orangeburg County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45077",
+   "geo_type": "county",
+   "name": "Pickens County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45079",
+   "geo_type": "county",
+   "name": "Richland County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45081",
+   "geo_type": "county",
+   "name": "Saluda County",
+   "parent_geo_id": "region:midlands"
+  },
+  {
+   "geo_id": "45083",
+   "geo_type": "county",
+   "name": "Spartanburg County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45085",
+   "geo_type": "county",
+   "name": "Sumter County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45087",
+   "geo_type": "county",
+   "name": "Union County",
+   "parent_geo_id": "region:upstate"
+  },
+  {
+   "geo_id": "45089",
+   "geo_type": "county",
+   "name": "Williamsburg County",
+   "parent_geo_id": "region:pee_dee"
+  },
+  {
+   "geo_id": "45091",
+   "geo_type": "county",
+   "name": "York County",
+   "parent_geo_id": "region:midlands"
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+{
+ "_note": "Human-confirmed exceptions to QA gates. Each entry needs who/when/why. Example: {\"gate\":\"unit_price_outlier\",\"key\":\"kroger:01400943|eggs_large_dozen|2026-10-05\",\"confirmed_by\":\"...\",\"reason\":\"real egg price spike, verified in store\"}",
+ "overrides": []
+}
