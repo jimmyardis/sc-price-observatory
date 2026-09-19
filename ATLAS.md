@@ -10,12 +10,13 @@
 | Phase | 0: prove the pipeline |
 
 ## Current State
-**Weights are official and the basket is calibrated; publication now waits only on a human sign-off.** The basket is the USDA Thrifty Food Plan 2021 for the reference family of four, generated from USDA category pounds split by ERS availability (`execution/calibrate_basket.py`, status `proposed`). The weights are the BLS CPI-U December 2025 relative importances, reconciled and with the codes corrected. On this week's Richland prices a family of four's week costs $183.30, which is 5.7 hours of average SC work. USDA's national cost for the same plan is $236.50 (July 2026); the gap is mostly our cheaper store-brand stand-ins. The weekly timer starts 2026-09-22; the regional series runs 2006–2026 and needs pre-2014 wages. Public repo: github.com/jimmyardis/sc-price-observatory. 88 tests pass.
+**The observatory is public: first snapshots published and a site reading them.** The basket is signed off (`final`), so the measured week publishes ($183.30 for a family of four, 5.66 hours, Richland) and so does the regional series (2006–2026 monthly basket cost; county hours from 2014 until the pre-2014 wages load). The site is plain HTML/CSS/JS in `site/`, deployed by GitHub Actions to jimmyardis.github.io/sc-price-observatory: headline, county choropleth, hours history, cost against the BLS index, method, basket with USDA provenance, coverage, and a manifest with checksums. The weekly timer starts 2026-09-22. 89 tests pass.
 
 ## Next Action
-Review `config/basket_tfp2021.json` (quantities + provenance) and set `status` to `final`. That unblocks publishing the measured and regional snapshots.
+Let Tuesday's run collect week 2, then confirm the site picks it up (the deploy fires on any push that touches `snapshots/`, so the weekly run's snapshots need committing and pushing).
 
 ## Blockers
+- Publishing the weekly snapshot is still manual: `ops/weekly.sh` writes drafts only, so someone must run the pipeline without `--draft` and push `snapshots/` for the site to update.
 - Walmart, Aldi, Publix, and Food Lion collectors are deliberately stubbed until the ToS/legal question (spec §11 Q1) has a real answer.
 - 2006–2013 county wages need about 6 BLS API queries; today's 25-query quota is spent. The Tuesday run picks it up automatically, or sooner with a free `BLS_API_KEY` in `.env`.
 
@@ -30,6 +31,13 @@ Review `config/basket_tfp2021.json` (quantities + provenance) and set `status` t
 - `data/observatory.db` is gitignored and is the only copy of observations apart from the weekly C: backup. Is an off-machine backup (private repo or cloud) wanted?
 
 ## Session Log
+### 2026-09-19 (site)
+- Basket marked `final` after the user reviewed it; first measured snapshot published, then republished twice (r2, r3) to carry basket provenance and `household_short` — the immutability and revision-gate machinery worked as designed.
+- `wages_cover_history` redefined: it now fails only when a geo lacks a wage for a month *other* geos have. Months before any QCEW quarter are uniformly no-data, so the regional series publishes now and extends back to 2006 later without moving a published value (the alternative — publishing from 2014 and later republishing from 2006 — would have shifted the gap-filling chain and tripped the revision gate).
+- Built the site: `site/` + `ops/build_site.sh` + `.github/workflows/pages.yml`, Pages set to workflow build. County boundaries from the Census 2025 cartographic file, simplified to 71 KB.
+- Charts follow the dataviz skill: validated blue/orange categorical pair, sequential blue ramp for the choropleth, hover tooltips, table views, legends, selected dark mode.
+- Checked in a headless browser (light and dark, all five pages, console clean). Fixed: duplicated "County County", an overflowing provenance column, and a caption that claimed the reconstruction tracks CPI more closely than it does (22-item basket +44% since 2006 vs +68% for full food-at-home — composition, now stated).
+
 ### 2026-09-19 (later)
 - Repo made public at github.com/jimmyardis/sc-price-observatory (checked first: no secrets, raw payloads and DB gitignored).
 - Household decided: USDA reference family of four (user's choice; spec §11 Q2 closed). Headline sentence now reads "…for a family of four."
