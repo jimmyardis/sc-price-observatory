@@ -70,3 +70,5 @@ Use these words exactly, in code, names, and conversation.
 | `execution/export_regional.py` | regional snapshot build, publish |
 | `execution/run_regional.py` | the one command (regional) |
 | `ops/weekly.sh` + `ops/sc-price-weekly.{service,timer}` | Tuesday 03:00 run, catches up after downtime, backs up the DB |
+| `ops/build_site.sh` + `.github/workflows/pages.yml` | assemble `site/` + `snapshots/` and deploy to GitHub Pages |
+| `site/` | the public front end; reads published snapshots only (see `site/README.md`) |

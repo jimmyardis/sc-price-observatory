@@ -6,6 +6,8 @@ The first collector is groceries: a weekly, county-level index and a **time pric
 
 The point is that every number can be checked. Observations are append-only, the method is versioned, every QA gate is public, and published snapshots are never overwritten.
 
+**Live:** <https://jimmyardis.github.io/sc-price-observatory/>
+
 ## Status: Phase 0 (prove the pipeline)
 
 Running on live Kroger data since 2026-09-17: 43 SC stores discovered, all 60 items mapped, and a weekly collection timer (`ops/`) starting 2026-09-22. 82 tests pass. Weights are official BLS figures; the basket is calibrated to the USDA Thrifty Food Plan and awaits sign-off.
@@ -46,7 +48,7 @@ Weekly automation: `ops/weekly.sh`, run by the systemd user timer `sc-price-week
 | `db/migrations/` | Postgres-dialect schema (SQLite translated for Phase 0) |
 | `snapshots/` | Published, immutable JSON/CSV. The site reads only these (`regional/` holds the reconstruction) |
 | `ops/` | Weekly script and systemd timer |
-| `site/` | Static frontend (Phase 2), contract in `site/README.md` |
+| `site/` | The public site: plain HTML/CSS/JS reading only `snapshots/`. Contract in `site/README.md` |
 | `docs/adr/` | Decisions worth remembering |
 | `.tmp/` | Raw payloads, QA reports, alerts, drafts. Regenerable, gitignored |
 
