@@ -1,0 +1,465 @@
+{
+ "basket_version": "tfp2021-v1",
+ "household": "USDA reference family of four (man and woman 20-50, children 6-8 and 9-11)",
+ "ers_source": "USDA Economic Research Service, Food Availability (Per Capita) Data System, CSV downloads, fetched 2026-09-19. https://www.ers.usda.gov/data-products/food-availability-per-capita-data-system/",
+ "allocation": {
+  "veg_dark_green": {
+   "parts": [
+    {
+     "concepts": [
+      "broccoli_frozen"
+     ]
+    }
+   ]
+  },
+  "veg_red_orange": {
+   "parts": [
+    {
+     "concepts": [
+      "tomatoes"
+     ],
+     "ers": {
+      "file": "vegetables-fresh.csv",
+      "commodity": "Fresh vegetables (retail weight): Per capita availability",
+      "attribute": "Tomatoes-Pounds",
+      "year": 2022,
+      "value": 16.174
+     }
+    },
+    {
+     "concepts": [
+      "carrots"
+     ],
+     "ers": {
+      "file": "vegetables-fresh.csv",
+      "commodity": "Fresh vegetables (retail weight): Per capita availability",
+      "attribute": "Carrots-Pounds",
+      "year": 2022,
+      "value": 8.1299
+     }
+    }
+   ]
+  },
+  "veg_beans": {
+   "parts": [
+    {
+     "concepts": [
+      "pinto_beans_dry"
+     ]
+    }
+   ]
+  },
+  "veg_starchy": {
+   "parts": [
+    {
+     "concepts": [
+      "potatoes"
+     ]
+    }
+   ]
+  },
+  "veg_other": {
+   "parts": [
+    {
+     "concepts": [
+      "lettuce"
+     ],
+     "ers": {
+      "file": "vegetables-fresh.csv",
+      "commodity": "Fresh vegetables (retail weight): Per capita availability",
+      "attribute": "Lettuce head-Pounds",
+      "year": 2022,
+      "value": 9.6157
+     }
+    },
+    {
+     "concepts": [
+      "onions"
+     ],
+     "ers": {
+      "file": "vegetables-fresh.csv",
+      "commodity": "Fresh vegetables (retail weight): Per capita availability",
+      "attribute": "Onions-Pounds",
+      "year": 2022,
+      "value": 18.0222
+     }
+    },
+    {
+     "concepts": [
+      "green_beans_canned"
+     ],
+     "ers": {
+      "file": "vegetables-canned.csv",
+      "commodity": "Vegetables for canning (farm weight): Per capita availability",
+      "attribute": "Snap beans-Pounds",
+      "year": 2019,
+      "value": 2.4376
+     },
+     "note": "ERS publishes canned snap beans only at farm weight"
+    }
+   ]
+  },
+  "fruit_whole": {
+   "parts": [
+    {
+     "concepts": [
+      "apples"
+     ],
+     "ers": {
+      "file": "fruit-fresh.csv",
+      "commodity": "Fresh fruit (retail weight): Per capita availability",
+      "attribute": "Noncitrus-Apples-Pounds",
+      "year": 2021,
+      "value": 15.1811
+     }
+    },
+    {
+     "concepts": [
+      "bananas"
+     ],
+     "ers": {
+      "file": "fruit-fresh.csv",
+      "commodity": "Fresh fruit (retail weight): Per capita availability",
+      "attribute": "Noncitrus-Bananas-Pounds",
+      "year": 2021,
+      "value": 26.8557
+     }
+    },
+    {
+     "concepts": [
+      "oranges"
+     ],
+     "ers": {
+      "file": "fruit-fresh.csv",
+      "commodity": "Fresh fruit (retail weight): Per capita availability",
+      "attribute": "Citrus-Oranges and temples-Pounds",
+      "year": 2021,
+      "value": 7.9017
+     }
+    },
+    {
+     "concepts": [
+      "strawberries"
+     ],
+     "ers": {
+      "file": "fruit-fresh.csv",
+      "commodity": "Fresh fruit (retail weight): Per capita availability",
+      "attribute": "Noncitrus-Strawberries-Pounds",
+      "year": 2021,
+      "value": 6.7156
+     }
+    }
+   ]
+  },
+  "fruit_juice": {
+   "parts": [
+    {
+     "concepts": [
+      "orange_juice"
+     ]
+    }
+   ]
+  },
+  "grain_wg_staple": {
+   "parts": [
+    {
+     "concepts": [
+      "bread_white",
+      "rice_white",
+      "spaghetti"
+     ],
+     "even": true
+    }
+   ],
+   "note": "priced at the refined (white) items we collect; whole-grain versions typically cost somewhat more, so this category's cost is understated"
+  },
+  "grain_wg_cereal": {
+   "parts": [
+    {
+     "concepts": [
+      "cereal_oats"
+     ]
+    }
+   ]
+  },
+  "grain_rg_staple": {
+   "parts": [
+    {
+     "concepts": [
+      "bread_white",
+      "rice_white",
+      "spaghetti",
+      "flour_ap"
+     ],
+     "even": true
+    }
+   ]
+  },
+  "grain_rg_other": {
+   "parts": [
+    {
+     "concepts": [
+      "potato_chips"
+     ]
+    }
+   ],
+   "note": "the category's 'snacks'"
+  },
+  "dairy_lowfat": {
+   "parts": [
+    {
+     "concepts": [
+      "milk_whole"
+     ],
+     "ers": {
+      "file": "dairy-products.csv",
+      "commodity": "Dairy products: Per capita availability",
+      "attribute": "Fluid milk-Pounds",
+      "year": 2021,
+      "value": 134.3689
+     }
+    },
+    {
+     "concepts": [
+      "yogurt"
+     ],
+     "ers": {
+      "file": "dairy-products.csv",
+      "commodity": "Dairy products: Per capita availability",
+      "attribute": "Yogurt-Pounds",
+      "year": 2021,
+      "value": 14.3034
+     }
+    }
+   ],
+   "note": "priced at whole milk; low-fat and whole milk sell at nearly the same price per gallon"
+  },
+  "dairy_higherfat": {
+   "parts": [
+    {
+     "concepts": [
+      "milk_whole"
+     ],
+     "ers": {
+      "file": "dairy-products.csv",
+      "commodity": "Dairy products: Per capita availability",
+      "attribute": "Fluid milk-Pounds",
+      "year": 2021,
+      "value": 134.3689
+     }
+    },
+    {
+     "concepts": [
+      "yogurt"
+     ],
+     "ers": {
+      "file": "dairy-products.csv",
+      "commodity": "Dairy products: Per capita availability",
+      "attribute": "Yogurt-Pounds",
+      "year": 2021,
+      "value": 14.3034
+     }
+    }
+   ]
+  },
+  "dairy_cheese": {
+   "parts": [
+    {
+     "concepts": [
+      "cheddar"
+     ]
+    }
+   ]
+  },
+  "protein_meats": {
+   "parts": [
+    {
+     "concepts": [
+      "ground_beef",
+      "beef_sirloin",
+      "hot_dogs"
+     ],
+     "ers": {
+      "file": "red-meat-poultry-and-fish.csv",
+      "commodity": "Red meat and chicken (retail weight): Per capita availability",
+      "attribute": "Red meat-Beef-Pounds",
+      "year": 2021,
+      "value": 58.7808
+     },
+     "even_within": true
+    },
+    {
+     "concepts": [
+      "bacon",
+      "pork_chops"
+     ],
+     "ers": {
+      "file": "red-meat-poultry-and-fish.csv",
+      "commodity": "Red meat and chicken (retail weight): Per capita availability",
+      "attribute": "Red meat-Pork-Pounds",
+      "year": 2021,
+      "value": 50.5587
+     },
+     "even_within": true
+    }
+   ]
+  },
+  "protein_poultry": {
+   "parts": [
+    {
+     "concepts": [
+      "chicken_breast",
+      "chicken_whole"
+     ],
+     "ers": {
+      "file": "red-meat-poultry-and-fish.csv",
+      "commodity": "Red meat, poultry, and fish (boneless weight): Per capita availability",
+      "attribute": "Poultry-Chicken-Pounds",
+      "year": 2021,
+      "value": 68.0989
+     },
+     "even_within": true
+    },
+    {
+     "concepts": [
+      "ground_turkey",
+      "lunchmeat_turkey"
+     ],
+     "ers": {
+      "file": "red-meat-poultry-and-fish.csv",
+      "commodity": "Red meat, poultry, and fish (boneless weight): Per capita availability",
+      "attribute": "Poultry-Turkey-Pounds",
+      "year": 2021,
+      "value": 12.0664
+     },
+     "even_within": true
+    }
+   ]
+  },
+  "protein_eggs": {
+   "parts": [
+    {
+     "concepts": [
+      "eggs_large"
+     ]
+    }
+   ]
+  },
+  "protein_seafood": {
+   "parts": [
+    {
+     "concepts": [
+      "tuna_canned"
+     ]
+    }
+   ],
+   "note": "the whole seafood category is represented by canned tuna, which is cheaper per pound than most fresh fish"
+  },
+  "protein_nuts": {
+   "parts": [
+    {
+     "concepts": [
+      "peanut_butter"
+     ]
+    }
+   ]
+  },
+  "misc_prepared": {
+   "parts": [
+    {
+     "concepts": [
+      "soup_chicken_noodle"
+     ]
+    }
+   ]
+  },
+  "misc_coffee_tea": {
+   "derived": "coffee_ground",
+   "note": "the category's pounds mix brewed and dry forms; the quantity is derived from the report's own rule instead (see conversions.coffee_ground)"
+  },
+  "misc_fats": {
+   "parts": [
+    {
+     "concepts": [
+      "butter",
+      "mayonnaise",
+      "vegetable_oil"
+     ],
+     "even": true
+    }
+   ]
+  },
+  "misc_sauces_sugars": {
+   "parts": [
+    {
+     "concepts": [
+      "sugar",
+      "ketchup"
+     ],
+     "even": true
+    }
+   ]
+  },
+  "misc_other": {
+   "parts": [
+    {
+     "concepts": [
+      "cola_2l",
+      "ice_cream"
+     ],
+     "even": true
+    }
+   ]
+  }
+ },
+ "conversions": {
+  "_note": "norm units per pound as purchased",
+  "oz": {
+   "per_lb": 16
+  },
+  "lb": {
+   "per_lb": 1
+  },
+  "fl_oz": {
+   "per_lb": 15.34,
+   "source": "TFP 2021 table footnote c (milk, juice, soft drinks: water-like density)"
+  },
+  "by_concept": {
+   "vegetable_oil": {
+    "per_lb": 16.68,
+    "source": "USDA FoodData Central SR Legacy: vegetable oil, 1 tbsp = 13.6 g (1 tbsp = 14.787 ml) -> 0.920 g/ml -> 453.6 g = 493.2 ml = 16.68 fl oz"
+   },
+   "mayonnaise": {
+    "per_lb": 16.44,
+    "source": "USDA FoodData Central SR Legacy: mayonnaise, regular, 1 tbsp = 13.8 g -> 0.933 g/ml -> 453.6 g = 486.1 ml = 16.44 fl oz"
+   },
+   "ice_cream": {
+    "per_lb": 27.5,
+    "source": "USDA FoodData Central SR Legacy: ice cream, vanilla, 1 cup = 132 g (1 cup = 236.6 ml) -> 0.558 g/ml; ice cream is labeled by volume -> 453.6 g = 813 ml = 27.5 fl oz"
+   },
+   "eggs_large": {
+    "per_lb": 0.6466,
+    "source": "ERS shell eggs 2021: 201.5487 eggs = 25.9737 lb retail weight per capita -> dozens per lb"
+   },
+   "lettuce": {
+    "per_lb": 0.8416,
+    "source": "USDA FoodData Central SR Legacy: lettuce, iceberg, 1 head medium (6 in. dia) = 539 g -> heads per lb"
+   },
+   "pinto_beans_dry": {
+    "per_lb": 0.2624,
+    "source": "USDA FNS Food Buying Guide, vegetables yield table: canned pinto beans 5.51 quarter-cup heated drained servings per lb as purchased; dry pinto beans 21.00 quarter-cup cooked servings per lb. TFP beans are 99% canned, so canned lb -> dry lb = 5.51/21.00"
+   },
+   "coffee_ground": {
+    "derived": {
+     "adults": 2,
+     "cups_per_adult_per_day": 1,
+     "fl_oz_per_cup": 8,
+     "grams_per_liter": 55
+    },
+    "source": "TFP 2021: 'a minimum of 1 cup per day of coffee or tea' for adults 20+; brewed at the Specialty Coffee Association Golden Cup ratio of 55 g per liter. 2 adults x 7 cups x 8 fl oz = 3.312 L -> 182 g = 6.42 oz ground coffee per week"
+   }
+  }
+ },
+ "household_short": "a family of four",
+ "rule": "Each TFP Market Basket Category's weekly pounds go to the basket concepts that represent it. Within a category, pounds are split by U.S. per capita availability (USDA ERS Food Availability Data System, latest year, retail weight where published). Where no public data splits a category, the split is even and marked so. Pounds are then converted to each concept's norm unit."
+}

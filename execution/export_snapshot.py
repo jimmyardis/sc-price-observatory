@@ -162,7 +162,7 @@ def build(db, cfg: dict, week: date, items: list[dict], weights_doc: dict, baske
     state = by_id.get("45", {})
     lv = state.get("levels") or {}
     household = basket_doc.get("household", "")
-    hh_short = "a family of three" if "three" in household else household
+    hh_short = basket_doc.get("household_short") or household
     headline = {
         "geo_id": "45", "status": state.get("status"),
         "hours_to_basket": lv.get("hours_to_basket"), "basket_cost": lv.get("basket_cost"),

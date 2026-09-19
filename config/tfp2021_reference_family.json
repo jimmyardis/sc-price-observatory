@@ -1,0 +1,199 @@
+{
+ "source": "USDA Food and Nutrition Service, Thrifty Food Plan, 2021 (report FNS-916, August 2021), table 'Thrifty Food Plan Market Basket for the reference family of four, June 2021: aggregate quantities, costs, and cost shares of Market Basket Categories in weekly amounts', report pages 37-38. https://fns-prod.azureedge.us/sites/default/files/resource-files/TFP2021.pdf",
+ "household": "reference family of four: a man and a woman age 20-50, a child age 6-8, and a child age 9-11",
+ "price_date": "2021-06",
+ "units": "weekly quantities in pounds, as purchased; cost in June 2021 dollars",
+ "total": {
+  "lbs": 140.94,
+  "cost": 192.84
+ },
+ "groups": {
+  "Vegetables": {
+   "lbs": 35.37,
+   "cost": 46.11,
+   "categories": [
+    "veg_dark_green",
+    "veg_red_orange",
+    "veg_beans",
+    "veg_starchy",
+    "veg_other"
+   ]
+  },
+  "Fruits": {
+   "lbs": 26.91,
+   "cost": 26.9,
+   "categories": [
+    "fruit_whole",
+    "fruit_juice"
+   ]
+  },
+  "Grains": {
+   "lbs": 14.13,
+   "cost": 30.67,
+   "categories": [
+    "grain_wg_staple",
+    "grain_wg_cereal",
+    "grain_rg_staple",
+    "grain_rg_other"
+   ]
+  },
+  "Dairy": {
+   "lbs": 41.3,
+   "cost": 27.94,
+   "categories": [
+    "dairy_lowfat",
+    "dairy_higherfat",
+    "dairy_cheese"
+   ]
+  },
+  "Protein foods": {
+   "lbs": 16.18,
+   "cost": 47.45,
+   "categories": [
+    "protein_meats",
+    "protein_poultry",
+    "protein_eggs",
+    "protein_seafood",
+    "protein_nuts"
+   ]
+  },
+  "Miscellaneous": {
+   "lbs": 7.05,
+   "cost": 13.76,
+   "categories": [
+    "misc_prepared",
+    "misc_coffee_tea",
+    "misc_fats",
+    "misc_sauces_sugars",
+    "misc_other"
+   ]
+  }
+ },
+ "categories": {
+  "veg_dark_green": {
+   "label": "Dark-green vegetables",
+   "lbs": 3.23,
+   "cost": 5.88
+  },
+  "veg_red_orange": {
+   "label": "Red and orange vegetables",
+   "lbs": 8.28,
+   "cost": 12.63
+  },
+  "veg_beans": {
+   "label": "Beans, peas, lentils",
+   "lbs": 6.06,
+   "cost": 5.42
+  },
+  "veg_starchy": {
+   "label": "Starchy vegetables",
+   "lbs": 10.64,
+   "cost": 12.71
+  },
+  "veg_other": {
+   "label": "Other vegetables",
+   "lbs": 7.16,
+   "cost": 9.47
+  },
+  "fruit_whole": {
+   "label": "Whole fruit",
+   "lbs": 17.76,
+   "cost": 19.48
+  },
+  "fruit_juice": {
+   "label": "100% fruit juice",
+   "lbs": 9.15,
+   "cost": 7.42
+  },
+  "grain_wg_staple": {
+   "label": "Whole-grain staple grains (e.g., rice, pasta, breads, tortillas)",
+   "lbs": 6.7,
+   "cost": 16.17
+  },
+  "grain_wg_cereal": {
+   "label": "Whole-grain cereals (e.g., oatmeal, ready-to-eat cereal)",
+   "lbs": 1.12,
+   "cost": 3.33
+  },
+  "grain_rg_staple": {
+   "label": "Refined-grain staple grains (e.g., rice, pasta, breads, tortillas)",
+   "lbs": 5.65,
+   "cost": 8.91
+  },
+  "grain_rg_other": {
+   "label": "Refined-grain other (e.g., cereals, crackers, snacks)",
+   "lbs": 0.66,
+   "cost": 2.26
+  },
+  "dairy_lowfat": {
+   "label": "Low- and non-fat milk, yogurt, soy alternatives",
+   "lbs": 25.48,
+   "cost": 14.95
+  },
+  "dairy_higherfat": {
+   "label": "Higher fat milk, yogurt, soy alternatives",
+   "lbs": 15.13,
+   "cost": 10.27
+  },
+  "dairy_cheese": {
+   "label": "Cheese",
+   "lbs": 0.7,
+   "cost": 2.72
+  },
+  "protein_meats": {
+   "label": "Meats",
+   "lbs": 2.26,
+   "cost": 8.96
+  },
+  "protein_poultry": {
+   "label": "Poultry",
+   "lbs": 6.89,
+   "cost": 17.31
+  },
+  "protein_eggs": {
+   "label": "Eggs",
+   "lbs": 2.12,
+   "cost": 3.33
+  },
+  "protein_seafood": {
+   "label": "Seafood",
+   "lbs": 2.94,
+   "cost": 12.8
+  },
+  "protein_nuts": {
+   "label": "Nuts, seeds, soy products",
+   "lbs": 1.97,
+   "cost": 5.05
+  },
+  "misc_prepared": {
+   "label": "Pre-prepared entrees and side dishes (e.g., soups, frozen entrees, pizza)",
+   "lbs": 1.51,
+   "cost": 3.71
+  },
+  "misc_coffee_tea": {
+   "label": "Coffee and tea",
+   "lbs": 1.63,
+   "cost": 2.23
+  },
+  "misc_fats": {
+   "label": "Table fats and oils",
+   "lbs": 1.71,
+   "cost": 4.11
+  },
+  "misc_sauces_sugars": {
+   "label": "Sauces, condiments, jams, honey, sugars, spices",
+   "lbs": 1.64,
+   "cost": 2.33
+  },
+  "misc_other": {
+   "label": "Other foods and beverages (e.g., soft drinks, fruit drinks, ice cream, pudding, cookies, candy bars)",
+   "lbs": 0.57,
+   "cost": 1.39
+  }
+ },
+ "quotes": {
+  "milk_fl_oz": "For some Market Basket Categories (e.g., low- and non-fat milk, yogurt, and soy alternatives), the amount in pounds can be converted to an approximate amount in fluid ounces by multiplying by 15.34. (table footnote c)",
+  "coffee": "the Market Baskets for adults ages 20 and older contain a minimum of 1 cup per day of coffee or tea. (Methods, practicality constraints)",
+  "beans_canned": "In the Thrifty Food Plan, 2021 nearly all (99 percent) are assumed to be purchased as canned varieties. (Results)"
+ }
+}

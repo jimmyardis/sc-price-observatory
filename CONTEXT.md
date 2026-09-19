@@ -28,7 +28,8 @@ Use these words exactly, in code, names, and conversation.
 - **Imputation**: a missing in-sample pair carries its stratum relative forward; after 4 consecutive missing weeks it is **dropped**.
 - **Imputed share**: imputed pairs / (observed + imputed) for a geo-week. Above 0.25 the cell is **suppressed**.
 - **Coverage rule**: a county needs 3+ stores across 2+ banners. Otherwise it is **thin coverage**, rendered hatched, and **rolled up** to its region (or to the state).
-- **Standard basket**: weekly quantities per concept for the reference household, priced at store brand or unbranded. The **national basket** swaps in national brands.
+- **Standard basket**: weekly quantities per concept for the **reference family** (USDA's family of four: a man and a woman 20-50, children 6-8 and 9-11), priced at store brand or unbranded. The **national basket** swaps in national brands.
+- **TFP category**: a USDA Thrifty Food Plan 2021 Market Basket Category (e.g. "Poultry", 6.89 lb/week). **Calibration** allocates each category's pounds to the concepts that represent it, split by ERS per-person availability (or evenly, when no data divides it), then converts to norm units. The basket file is generated, never hand-edited.
 - **Tier gap**: the geometric mean of national ÷ store-brand unit price across paired concepts.
 - **Time price** (**hours to basket**): basket cost ÷ (QCEW average weekly wage ÷ 40). Wages past the midpoint of the last published quarter are **projected** (held flat, flagged): the next quarter will move them, so they are provisional and exempt from the silent-revision gate.
 - **Method version**: labels a computation. Changing a published number requires a new one.
@@ -58,6 +59,7 @@ Use these words exactly, in code, names, and conversation.
 | `execution/normalize_units.py` | parse_pack_size |
 | `execution/match_items.py` | propose candidates, check item_map |
 | `execution/load_reference.py` | config → DB |
+| `execution/calibrate_basket.py` | TFP categories + ERS shares → `config/basket_tfp2021.json` |
 | `execution/compute_index.py` | effective_prices, compute_geo, rebase, basket_cost |
 | `execution/compute_time_price.py` | fetch_wages (QCEW), wage_at, hours_to_basket |
 | `execution/qa_checks.py` | gates → `.tmp/qa_report_{week}.json` |

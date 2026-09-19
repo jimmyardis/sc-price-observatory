@@ -8,7 +8,7 @@ The point is that every number can be checked. Observations are append-only, the
 
 ## Status: Phase 0 (prove the pipeline)
 
-Running on live Kroger data since 2026-09-17: 43 SC stores discovered, all 60 items mapped, and a weekly collection timer (`ops/`) starting 2026-09-22. 82 tests pass. Publication is blocked, on purpose, until the weights and basket quantities are real.
+Running on live Kroger data since 2026-09-17: 43 SC stores discovered, all 60 items mapped, and a weekly collection timer (`ops/`) starting 2026-09-22. 82 tests pass. Weights are official BLS figures; the basket is calibrated to the USDA Thrifty Food Plan and awaits sign-off.
 
 **History before collection.** Store-level prices from before we started can't be recovered, so none are invented. Instead there is a separate, clearly labeled series, *regional prices, local wages*: BLS average prices for the South region × each county's QCEW wage, monthly from 2006. It is a reconstruction, published apart from the measured series and never mixed into it (ADR 0004).
 
@@ -31,7 +31,9 @@ python -m execution.run_regional --draft               # regional reconstruction
 
 Weekly automation: `ops/weekly.sh`, run by the systemd user timer `sc-price-weekly.timer` (Tuesdays 03:00; `Persistent=true`, so a run missed while WSL was down fires on the next start). It also backs up `data/observatory.db` to `/mnt/c/Users/Owner/sc-price-observatory-backups/` (keeps 12). Install it with `ln -sf $PWD/ops/sc-price-weekly.* ~/.config/systemd/user/ && systemctl --user enable --now sc-price-weekly.timer`.
 
-`run_pipeline` without `--draft` publishes to `snapshots/` only if every QA gate passes. It won't pass while `config/weights_2025.json` is unverified or `config/basket_2026Q3.json` is still a draft, and that's intentional.
+`run_pipeline` without `--draft` publishes to `snapshots/` only if every QA gate passes, including a human sign-off on the basket (`status: final` in `config/basket_tfp2021.json`).
+
+**The basket** is the USDA Thrifty Food Plan, 2021 for its reference family of four, the diet SNAP's maximum benefit is set by law to afford. `python -m execution.calibrate_basket` derives each item's weekly quantity from USDA's category pounds, split within a category by ERS per-person availability; every number traces to a source in `config/basket_calibration.json`. **The weights** are the official BLS CPI-U relative importances, December 2025.
 
 ## Layout
 

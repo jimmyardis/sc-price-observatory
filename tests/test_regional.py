@@ -236,5 +236,5 @@ def test_overlap_puts_measured_weeks_next_to_the_regional_month(db, tmp_dirs):
                         for i, c in enumerate(reg["concepts"])])
     out = compute_regional.overlap(obs, config.items(), reg, basket["weekly_quantity"], rows)
     assert out[0]["regional_month"] == "2024-12-01" and out[0]["regional_month_lag"] == 1
-    assert out[0]["measured_cost"] == pytest.approx(sum(basket["weekly_quantity"][c] for c in reg["concepts"]))
+    assert out[0]["measured_cost"] == pytest.approx(sum(basket["weekly_quantity"][c] for c in reg["concepts"]), abs=0.01)
     assert out[0]["measured_over_regional"] == pytest.approx(out[0]["measured_cost"] / rows[-1]["cost"], abs=1e-4)

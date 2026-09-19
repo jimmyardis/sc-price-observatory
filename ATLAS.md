@@ -10,10 +10,10 @@
 | Phase | 0: prove the pipeline |
 
 ## Current State
-**The measured pipeline runs weekly on its own now, and there is 20 years of labeled history beside it.** A systemd user timer (`sc-price-weekly.timer`, Tuesdays 03:00; it catches up if WSL was down) collects Kroger prices, writes draft snapshots, and backs the DB up to C:. The first run is 2026-09-22. The new *regional prices, local wages* reconstruction (ADR 0004) prices a fixed 22-concept basket from BLS South average prices, monthly 2006-01 to 2026-08 (246 of 248 months publishable), against each county's QCEW wage. County hours already run 2014 to now; 2006–2013 wages are waiting on BLS API quota. 82 tests pass. Nothing publishes until the weights and basket quantities are real.
+**Weights are official and the basket is calibrated; publication now waits only on a human sign-off.** The basket is the USDA Thrifty Food Plan 2021 for the reference family of four, generated from USDA category pounds split by ERS availability (`execution/calibrate_basket.py`, status `proposed`). The weights are the BLS CPI-U December 2025 relative importances, reconciled and with the codes corrected. On this week's Richland prices a family of four's week costs $183.30, which is 5.7 hours of average SC work. USDA's national cost for the same plan is $236.50 (July 2026); the gap is mostly our cheaper store-brand stand-ins. The weekly timer starts 2026-09-22; the regional series runs 2006–2026 and needs pre-2014 wages. Public repo: github.com/jimmyardis/sc-price-observatory. 88 tests pass.
 
 ## Next Action
-Replace the placeholder basket quantities (USDA Thrifty Food Plan calibration) and the BLS relative importances. That one change unblocks publication of both the measured and the regional snapshots.
+Review `config/basket_tfp2021.json` (quantities + provenance) and set `status` to `final`. That unblocks publishing the measured and regional snapshots.
 
 ## Blockers
 - Walmart, Aldi, Publix, and Food Lion collectors are deliberately stubbed until the ToS/legal question (spec §11 Q1) has a real answer.
@@ -21,15 +21,22 @@ Replace the placeholder basket quantities (USDA Thrifty Food Plan calibration) a
 
 ## Open Questions
 - Richland has 3 Krogers but only one banner, so the county reads `thin_coverage` until a second banner clears the legal review. The state and Midlands cells publish.
-- Real BLS CPI-U relative importances (Dec 2025) per stratum; bls.gov blocks scripted fetches, so pull them by hand.
-- Basket quantities: calibrate against the USDA Thrifty Food Plan 2021 market basket? Family of three confirmed?
 - Region membership for boundary counties (York/Chester/Lancaster, Sumter/Clarendon, Georgetown, Allendale).
+- Seafood is priced entirely as canned tuna (47 oz/week), and whole grains at white-bread/rice/pasta prices. Add a fresh or frozen fish item and whole-grain items? Either would narrow the gap to USDA's national TFP cost.
+- Publish USDA's monthly national TFP cost as a benchmark reference series next to the SC number?
 - Promo handling test, backfill, publication cadence (spec §11 Q3–5).
 - Postgres path untested (no local server). Test before Phase 1 migration.
 - Overlap week 1: the regional basket's 22 concepts cost $79.48 at 3 Richland Krogers (store brand) vs $89.90 BLS South average (all brands), 12% below. Is the gap brand mix or real? Needs more weeks and banners before it's a claim.
 - `data/observatory.db` is gitignored and is the only copy of observations apart from the weekly C: backup. Is an off-machine backup (private repo or cloud) wanted?
 
 ## Session Log
+### 2026-09-19 (later)
+- Repo made public at github.com/jimmyardis/sc-price-observatory (checked first: no secrets, raw payloads and DB gitignored).
+- Household decided: USDA reference family of four (user's choice; spec §11 Q2 closed). Headline sentence now reads "…for a family of four."
+- Basket calibrated to the TFP 2021 reference family table (transcription checked against USDA's own group subtotals). Within-category split by ERS per-capita availability; even split only where no data divides a category (staple grains, fats, sauces/sugar, soda/ice cream). Conversions sourced: TFP 15.34 fl oz/lb, FoodData Central densities (oil, mayo, ice cream, iceberg head), ERS egg weight (1.55 lb/dozen), FNS Food Buying Guide beans (canned→dry ×5.51/21.00), coffee from TFP's "1 cup per day" per adult at SCA 55 g/L. Left at `proposed` for the user's review, and the gate now requires `final`.
+- Weights: official BLS Dec 2025 relative importances, fetched through a summarizer, so every group total was reconciled against its strata (this caught a dropped "Other meats" line). Codes checked against data.bls.gov titles: FE01/FE02→FE, FH01→FH, FN02 (frozen juice!)→FN03.
+- Benchmark: USDA TFP reference family, July 2026 = $236.50/wk; SC measured = $183.30.
+
 ### 2026-09-19
 - First commit (`d4fd2d4`). The repo had zero commits before this session.
 - **Historical pricing answer:** store-level SC history can't be recovered. Built the defensible alternative, *regional prices, local wages*: BLS South average prices (AP series, titles verified at data.bls.gov) × county QCEW wages, monthly from 2006. Rejected back-casting today's basket with CPI (ADR 0004).

@@ -12,15 +12,15 @@ beef_sirloin_steak,beef_sirloin,Top sirloin steak,FC03,lb,unbranded,top sirloin 
 bacon_store,bacon,"Bacon, sliced",FD01,oz,store_brand,bacon,,true
 bacon_national,bacon,"Bacon, sliced (Smithfield)",FD01,oz,national_brand,smithfield bacon,Smithfield,true
 pork_chops_bone_in,pork_chops,Bone-in pork chops,FD03,lb,unbranded,bone in pork chops,,true
-hot_dogs_store,hot_dogs,Beef franks,FE01,oz,store_brand,beef hot dogs,,true
-hot_dogs_national,hot_dogs,Beef franks (Ball Park),FE01,oz,national_brand,ball park beef franks,Ball Park,true
-lunchmeat_turkey_store,lunchmeat_turkey,Sliced turkey lunchmeat,FE02,oz,store_brand,sliced turkey breast lunch meat,,true
+hot_dogs_store,hot_dogs,Beef franks,FE,oz,store_brand,beef hot dogs,,true
+hot_dogs_national,hot_dogs,Beef franks (Ball Park),FE,oz,national_brand,ball park beef franks,Ball Park,true
+lunchmeat_turkey_store,lunchmeat_turkey,Sliced turkey lunchmeat,FE,oz,store_brand,sliced turkey breast lunch meat,,true
 chicken_breast_boneless,chicken_breast,Boneless skinless chicken breast,FF01,lb,unbranded,boneless skinless chicken breast,,true
 chicken_whole,chicken_whole,Whole fryer chicken,FF01,lb,unbranded,whole chicken,,true
 ground_turkey,ground_turkey,Ground turkey,FF02,lb,unbranded,ground turkey,,true
 tuna_canned_store,tuna_canned,Chunk light tuna in water,FG02,oz,store_brand,chunk light tuna in water,,true
 tuna_canned_national,tuna_canned,Chunk light tuna in water (StarKist),FG02,oz,national_brand,starkist chunk light tuna,StarKist,true
-eggs_large_dozen,eggs_large,Large grade A eggs,FH01,dozen,store_brand,large eggs,,true
+eggs_large_dozen,eggs_large,Large grade A eggs,FH,dozen,store_brand,large eggs,,true
 milk_whole_store,milk_whole,"Whole milk, gallon",FJ01,fl_oz,store_brand,whole milk gallon,,true
 cheddar_block_store,cheddar,Cheddar cheese block,FJ02,oz,store_brand,sharp cheddar cheese block,,true
 cheddar_block_national,cheddar,Cheddar cheese block (Kraft/Tillamook),FJ02,oz,national_brand,tillamook sharp cheddar block,Tillamook,true
@@ -44,8 +44,8 @@ broccoli_frozen_national,broccoli_frozen,Frozen broccoli florets (Birds Eye),FM0
 pinto_beans_dry,pinto_beans_dry,Dry pinto beans,FM03,lb,store_brand,dry pinto beans,,true
 cola_2l_store,cola_2l,"Cola, 2 liter",FN01,fl_oz,store_brand,cola 2 liter,,true
 cola_2l_national,cola_2l,"Cola, 2 liter (Coca-Cola)",FN01,fl_oz,national_brand,coca-cola 2 liter,Coca-Cola,true
-orange_juice_store,orange_juice,"Orange juice, not from concentrate",FN02,fl_oz,store_brand,orange juice not from concentrate,,true
-orange_juice_national,orange_juice,Orange juice (Tropicana),FN02,fl_oz,national_brand,tropicana orange juice,Tropicana,true
+orange_juice_store,orange_juice,"Orange juice, not from concentrate",FN03,fl_oz,store_brand,orange juice not from concentrate,,true
+orange_juice_national,orange_juice,Orange juice (Tropicana),FN03,fl_oz,national_brand,tropicana orange juice,Tropicana,true
 coffee_ground_store,coffee_ground,"Ground coffee, medium roast",FP01,oz,store_brand,ground coffee medium roast,,true
 coffee_ground_national,coffee_ground,Ground coffee (Folgers Classic Roast),FP01,oz,national_brand,folgers classic roast ground coffee,Folgers,true
 sugar_granulated,sugar,Granulated sugar,FR01,lb,store_brand,granulated sugar 4 lb,,true

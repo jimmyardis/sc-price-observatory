@@ -8,8 +8,8 @@ from execution.compute_index import (base_month, basket_cost, compute_geo, conce
                                      effective_prices, rebase)
 
 W0 = date(2026, 9, 7)  # a Monday
-STRATUM = {"milk": "FJ01", "cheese": "FJ02", "eggs": "FH01", "bread": "FB01"}
-EQUAL = {"FJ01": 1.0, "FJ02": 1.0, "FH01": 1.0, "FB01": 1.0}
+STRATUM = {"milk": "FJ01", "cheese": "FJ02", "eggs": "FH", "bread": "FB01"}
+EQUAL = {"FJ01": 1.0, "FJ02": 1.0, "FH": 1.0, "FB01": 1.0}
 
 
 def wk(n):

@@ -1,229 +1,228 @@
 {
- "weights_version": "2025-draft",
- "verified": false,
- "source": "PLACEHOLDER. Group totals are the approximate food-at-home shares from spec section 4; each group's share is split evenly across the strata the basket covers. Replace relative_importance with the BLS CPI-U relative importance (December 2025, U.S. city average) for each item stratum from https://www.bls.gov/cpi/tables/relative-importance/ and set verified=true. Stratum codes follow the BLS item-strata naming (SEFxxx without the 'SE' prefix) and must be checked against that table too.",
- "units": "relative importance points; normalized at compute time over strata with data",
+ "weights_version": "2025-12",
+ "verified": true,
+ "source": "BLS, 'Relative importance of components in the Consumer Price Indexes: U.S. city average, December 2025' (2024 weights), CPI-U column. https://www.bls.gov/cpi/tables/relative-importance/2025.htm",
+ "verification": "Transcribed 2026-09-19 and reconciled arithmetically: every group total equals the sum of its item strata within \u00b10.001, and all food-at-home strata sum to 8.327 against the published 8.325 (rounding). Stratum codes checked one by one against series titles at https://data.bls.gov/timeseries/CUUR0000SE<code>.",
+ "units": "relative importance points (share of the all-items CPI-U); normalized at compute time over strata with a relative that week",
+ "food_at_home_total": 8.325,
+ "covered_strata_total": 5.95,
+ "coverage_note": "The 38 strata we price carry 5.95 of 8.325 food-at-home points (71%). Unpriced strata (e.g. bakery other than bread, candy, frozen prepared foods, fresh fish, other miscellaneous foods) are left out rather than imputed, so the index represents the strata it measures.",
  "groups": {
   "cereals_bakery": {
    "label": "Cereals and bakery products",
-   "approx_share": 13
+   "relative_importance": 1.035
   },
   "meats_poultry_fish_eggs": {
    "label": "Meats, poultry, fish, and eggs",
-   "approx_share": 23
+   "relative_importance": 1.995
   },
   "dairy": {
    "label": "Dairy and related products",
-   "approx_share": 11
+   "relative_importance": 0.758
   },
   "fruits_vegetables": {
    "label": "Fruits and vegetables",
-   "approx_share": 19
+   "relative_importance": 1.269
   },
   "beverages": {
    "label": "Nonalcoholic beverages and beverage materials",
-   "approx_share": 10
+   "relative_importance": 0.995
   },
   "other_food_home": {
    "label": "Other food at home",
-   "approx_share": 24
+   "relative_importance": 2.273
   }
  },
  "strata": {
   "FA01": {
    "label": "Flour and prepared flour mixes",
    "group": "cereals_bakery",
-   "relative_importance": 3.25
+   "relative_importance": 0.038
   },
   "FA02": {
    "label": "Breakfast cereal",
    "group": "cereals_bakery",
-   "relative_importance": 3.25
+   "relative_importance": 0.136
   },
   "FA03": {
    "label": "Rice, pasta, cornmeal",
    "group": "cereals_bakery",
-   "relative_importance": 3.25
+   "relative_importance": 0.141
   },
   "FB01": {
    "label": "Bread",
    "group": "cereals_bakery",
-   "relative_importance": 3.25
+   "relative_importance": 0.175
   },
   "FC01": {
    "label": "Uncooked ground beef",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.236
   },
   "FC03": {
    "label": "Uncooked beef steaks",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.24
   },
   "FD01": {
    "label": "Bacon, breakfast sausage, and related products",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.131
   },
   "FD03": {
    "label": "Pork chops",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.046
   },
-  "FE01": {
-   "label": "Frankfurters",
+  "FE": {
+   "label": "Other meats",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
-  },
-  "FE02": {
-   "label": "Lunchmeats",
-   "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.207
   },
   "FF01": {
    "label": "Chicken",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.291
   },
   "FF02": {
    "label": "Other uncooked poultry including turkey",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.072
   },
   "FG02": {
    "label": "Processed fish and seafood",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.149
   },
-  "FH01": {
+  "FH": {
    "label": "Eggs",
    "group": "meats_poultry_fish_eggs",
-   "relative_importance": 2.3
+   "relative_importance": 0.133
   },
   "FJ01": {
    "label": "Milk",
    "group": "dairy",
-   "relative_importance": 2.75
+   "relative_importance": 0.19
   },
   "FJ02": {
-   "label": "Cheese and cheese products",
+   "label": "Cheese and related products",
    "group": "dairy",
-   "relative_importance": 2.75
+   "relative_importance": 0.261
   },
   "FJ03": {
    "label": "Ice cream and related products",
    "group": "dairy",
-   "relative_importance": 2.75
+   "relative_importance": 0.115
   },
   "FJ04": {
    "label": "Other dairy and related products",
    "group": "dairy",
-   "relative_importance": 2.75
+   "relative_importance": 0.192
   },
   "FK01": {
    "label": "Apples",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.073
   },
   "FK02": {
    "label": "Bananas",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.06
   },
   "FK03": {
    "label": "Citrus fruits",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.077
   },
   "FK04": {
    "label": "Other fresh fruits",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.322
   },
   "FL01": {
    "label": "Potatoes",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.063
   },
   "FL02": {
    "label": "Lettuce",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.044
   },
   "FL03": {
    "label": "Tomatoes",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.063
   },
   "FL04": {
    "label": "Other fresh vegetables",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.305
   },
   "FM01": {
    "label": "Canned fruits and vegetables",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.096
   },
   "FM02": {
    "label": "Frozen fruits and vegetables",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.084
   },
   "FM03": {
    "label": "Other processed fruits and vegetables including dried",
    "group": "fruits_vegetables",
-   "relative_importance": 1.7273
+   "relative_importance": 0.082
   },
   "FN01": {
    "label": "Carbonated drinks",
    "group": "beverages",
-   "relative_importance": 3.3333
+   "relative_importance": 0.324
   },
-  "FN02": {
+  "FN03": {
    "label": "Nonfrozen noncarbonated juices and drinks",
    "group": "beverages",
-   "relative_importance": 3.3333
+   "relative_importance": 0.346
   },
   "FP01": {
    "label": "Coffee",
    "group": "beverages",
-   "relative_importance": 3.3333
+   "relative_importance": 0.221
   },
   "FR01": {
    "label": "Sugar and sugar substitutes",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.032
   },
   "FS01": {
    "label": "Butter and margarine",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.066
   },
   "FS02": {
    "label": "Salad dressing",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.055
   },
   "FS03": {
    "label": "Other fats and oils including peanut butter",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.11
   },
   "FT01": {
    "label": "Soups",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.085
   },
   "FT03": {
    "label": "Snacks",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.372
   },
   "FT04": {
    "label": "Spices, seasonings, condiments, sauces",
    "group": "other_food_home",
-   "relative_importance": 3.4286
+   "relative_importance": 0.317
   }
  }
 }

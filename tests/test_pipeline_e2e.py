@@ -84,7 +84,7 @@ def test_full_run_publishes_levels_index_and_headline(db, tmp_dirs):
     assert lexington["rolled_up_to"] == "region:midlands"
     assert by["45007"]["status"] == "no_data"
 
-    assert snap["headline"]["sentence"].endswith("hours of average local work buys a week of groceries for a family of three.")
+    assert snap["headline"]["sentence"].endswith("hours of average local work buys a week of groceries for a family of four.")
     assert richland["tier_gap"]["n_concepts"] == 17
     assert len(snap["basket"]) == 60
     manifest = json.loads((snaps / "manifest.json").read_text())

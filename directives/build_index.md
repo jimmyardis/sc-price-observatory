@@ -16,9 +16,10 @@
 7. **Time price:** cost ÷ (wage/40). QCEW wage interpolated between quarter midpoints; past the last quarter's midpoint it's held flat with `wage_is_projected` (provisional: exempt from `no_silent_revision`).
 
 ## Before any publication
-- `config/weights_2025.json` must hold real BLS CPI-U relative importances (Dec 2025) for each stratum, with codes checked against the BLS table. Then set `verified: true`.
-- `config/basket_2026Q3.json` quantities must be calibrated (e.g. USDA Thrifty Food Plan 2021 market basket, reference family). Then set `status` to final.
-- Pick and state **one** household (spec §11 Q2). The current draft says family of three to match the headline sentence.
+- Weights: `config/weights_2025.json` holds the BLS CPI-U relative importances, December 2025 (verified 2026-09-19; how it was reconciled is in the file). Refresh each year when BLS publishes the new table. bls.gov blocks scripts, so transcribe it, then check that group totals equal the sum of their strata, and check each code at `data.bls.gov/timeseries/CUUR0000SE<code>`.
+- Basket: `config/basket_tfp2021.json` is **generated**. Change `config/basket_calibration.json` or the TFP table, then run `python -m execution.calibrate_basket`; a test fails if the file drifts. A person must set `status` to `final`. The `config_verified` gate blocks anything else.
+- Household: USDA reference family of four (decided 2026-09-19; spec §11 Q2 closed).
+- Benchmark: USDA publishes the national monthly cost of this basket (`usda-thriftyplan-june2021-present.xlsx` at fna.usda.gov). Ours is priced with store-brand stand-ins per category, so a gap against it is mostly method, not geography.
 
 ## Revisions
 Recomputing is free. Changing a published number is not: bump `method_version` (ADR 0001).

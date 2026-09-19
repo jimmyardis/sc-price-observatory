@@ -7,13 +7,13 @@ Gates (spec §9, plus three the spec implies):
   stratum_relative        a published stratum moved outside ±10% week over week
   unknown_price_type      price_type='unknown' is >10% of the week's rows
   week_has_observations   the week has any observations at all
-  config_verified         weights verified and basket not draft
+  config_verified         weights verified and basket status final (a human signs off)
   no_silent_revision      an already-published value changed under the same method_version
                           (hours on a projected wage were published as provisional and may move)
 
 Regional reconstruction gates (run_regional):
   concepts_accounted      every standard-basket concept is priced or excluded with a reason, never both
-  config_verified         basket not draft (the reconstruction uses the same quantities)
+  config_verified         basket final (the reconstruction uses the same quantities)
   wages_cover_history     every geo has a wage for every publishable month
   no_silent_revision      as above, for published regional snapshots
 
@@ -114,8 +114,8 @@ def run(db, cfg: dict, week: date, snapshot: dict, weights_doc: dict, basket_doc
     cfg_fail = []
     if not weights_doc.get("verified"):
         cfg_fail.append({"key": "weights", "detail": f"{weights_doc.get('weights_version')} is not verified against BLS"})
-    if basket_doc.get("status") == "draft":
-        cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} quantities are draft"})
+    if basket_doc.get("status") != "final":
+        cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} is {basket_doc.get('status')}, not final"})
     gates.append(_gate("config_verified", cfg_fail, ov))
 
     revisions = []
@@ -155,8 +155,8 @@ def run_regional(reg: dict, basket_doc: dict, snapshot: dict, previous_snapshots
     gates.append(_gate("concepts_accounted", acct, ov))
 
     cfg_fail = []
-    if basket_doc.get("status") == "draft":
-        cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} quantities are draft"})
+    if basket_doc.get("status") != "final":
+        cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} is {basket_doc.get('status')}, not final"})
     gates.append(_gate("config_verified", cfg_fail, ov))
 
     publishable = {b["month"] for b in snapshot["basket"] if b["status"] == "published"}
