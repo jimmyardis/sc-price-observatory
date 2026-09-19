@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>South Carolina Price Observatory</title>
+<meta name="description" content="Weekly grocery prices measured in South Carolina, and the hours of average local work it takes to buy a week of them.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🛒</text></svg>">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">SC Price Observatory <span>· groceries</span></a>
+    <nav class="site" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="method.html">Method</a>
+      <a href="basket.html">Basket</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="data.html">Data</a>
+      <a href="https://github.com/jimmyardis/sc-price-observatory">Code</a>
+    </nav>
+    <button class="theme" type="button">Dark</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Nobody measures grocery prices in South Carolina. We do.</h1>
+  <p class="lede">BLS publishes no CPI for this state — the nearest official series lumps South Carolina in with
+    the entire Census South. Every &ldquo;South Carolina grocery cost&rdquo; in circulation is a national number with a
+    formula on top. This page reports prices collected from South Carolina stores, and the hours of average local
+    work that buy a week of them.</p>
+
+  <section id="headline" aria-labelledby="headline-h">
+    <h2 id="headline-h" class="hidden">This week</h2>
+    <div class="hero">
+      <div>
+        <div class="hero-figure" id="hero-hours">—</div>
+        <p class="hero-sentence" id="hero-sentence">Loading the published snapshot…</p>
+      </div>
+      <div class="card" id="hero-card"></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="note-box" id="week-one"></div>
+  </section>
+
+  <section id="map-section" aria-labelledby="map-h">
+    <h2 id="map-h">Hours of work per week of groceries, by county</h2>
+    <p>Groceries cost roughly the same across the state; wages do not. This map is the
+      <a href="method.html#regional">regional reconstruction</a> — regional prices, local wages — so it covers all 46
+      counties back to 2014. Click a county to chart it. Prices are collected in the ringed county only.</p>
+    <figure id="fig-map">
+      <div class="fig-head">
+        <span class="fig-title" id="map-title">County hours to basket</span>
+        <span class="fig-sub" id="map-sub"></span>
+        <span class="fig-tools">
+          <button class="btn" type="button" id="map-table" aria-pressed="false">Table</button>
+        </span>
+      </div>
+      <div class="map-legend" id="map-legend"></div>
+      <div class="chart-holder" id="map-holder"></div>
+      <figcaption id="map-caption"></figcaption>
+    </figure>
+  </section>
+
+  <section id="history" aria-labelledby="history-h">
+    <h2 id="history-h">The long view</h2>
+    <p>Hours are the measure that survives inflation: the basket and the paycheck move together, and what's left is
+      whether groceries got easier or harder to buy where you live.</p>
+    <div class="controls">
+      <label for="county-select" class="small muted">County</label>
+      <select id="county-select"></select>
+    </div>
+    <figure id="fig-hours">
+      <div class="fig-head">
+        <span class="fig-title">Hours of average local work to buy the weekly basket</span>
+        <span class="fig-sub">monthly, regional reconstruction</span>
+        <span class="fig-tools"><button class="btn" type="button" id="hours-table" aria-pressed="false">Table</button></span>
+      </div>
+      <div class="legend" id="hours-legend"></div>
+      <div class="chart-holder" id="hours-holder"></div>
+      <figcaption>Months where BLS published too little to price the basket are gaps, never interpolated:
+        April 2020 (collection disrupted) and October 2025 (the shutdown).</figcaption>
+    </figure>
+
+    <figure id="fig-cost">
+      <div class="fig-head">
+        <span class="fig-title">Basket cost against the official food-at-home index</span>
+        <span class="fig-sub">indexed, first published month = 100</span>
+        <span class="fig-tools"><button class="btn" type="button" id="cost-table" aria-pressed="false">Table</button></span>
+      </div>
+      <div class="legend" id="cost-legend"></div>
+      <div class="chart-holder" id="cost-holder"></div>
+      <figcaption id="cost-caption"></figcaption>
+    </figure>
+  </section>
+
+  <section id="overlap" aria-labelledby="overlap-h">
+    <h2 id="overlap-h">Measured against regional</h2>
+    <div id="overlap-body"><p class="muted">Loading…</p></div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Every number here is regenerable from raw observations. Observations are append-only, the method is versioned,
+      published snapshots are never overwritten, and a change to a published number requires a new method version.
+      <a href="data.html">Download the data</a> · <a href="method.html">Read the method</a> ·
+      <a href="https://github.com/jimmyardis/sc-price-observatory">Source code</a></p>
+    <p id="built"></p>
+  </div>
+</footer>
+
+<script type="module">
+import { SNAP, loadJSON, fail, fmt, initChrome, lineChart, choropleth, rampLegend, tableView, attachTableToggle } from "./assets/app.js";
+
+initChrome();
+
+const el = (id) => document.getElementById(id);
+
+try {
+  const [measured, regional, counties] = await Promise.all([
+    loadJSON(SNAP.measured), loadJSON(SNAP.regional), loadJSON(SNAP.counties),
+  ]);
+
+  /* ---- headline (measured) ---- */
+  const h = measured.headline;
+  const state = measured.geos.find((g) => g.geo_id === "45");
+  const measuredCounties = measured.geos.filter((g) => g.geo_type === "county" && g.coverage.n_stores > 0);
+  el("hero-hours").innerHTML = `${fmt.hours1(h.hours_to_basket)}<span class="unit">hours</span>`;
+  el("hero-sentence").textContent = h.sentence;
+  el("hero-card").innerHTML = `
+    <div class="small muted">Week of ${fmt.date(measured.week)} · method ${measured.method_version}</div>
+    <p style="margin-top:8px">A week of groceries for ${measured.config.household_short || "a family of four"} cost
+      <b>${fmt.usd(h.basket_cost)}</b> at store-brand shelf prices, against an average weekly wage of
+      <b>${fmt.usd0(h.avg_weekly_wage)}</b>${h.wage_is_projected ? " (projected — the next quarter of wage data will move it)" : ""}.</p>
+    <p class="small muted" style="margin-bottom:0">Prices collected at
+      ${measuredCounties.reduce((n, g) => n + g.coverage.n_stores, 0)} stores in
+      ${measuredCounties.map((g) => g.name).join(", ")}. Shelf prices only; promotions excluded from the headline.</p>`;
+
+  const lv = state.levels;
+  const kpi = (label, value, note) => `<div class="kpi"><div class="label">${label}</div><div class="value">${value}</div><div class="note">${note}</div></div>`;
+  el("kpis").innerHTML =
+    kpi("Store brand", fmt.usd(lv.basket_cost), "the headline basket") +
+    kpi("National brands", fmt.usd(lv.basket_cost_national), `${((lv.basket_cost_national / lv.basket_cost - 1) * 100).toFixed(0)}% more for the same list`) +
+    kpi("Chasing every sale", fmt.usd(lv.basket_cost_promo_incl), `saves ${fmt.usd(lv.basket_cost - lv.basket_cost_promo_incl)} this week`) +
+    kpi("Basket", `${measured.basket.filter((b) => b.in_standard_basket).length} items`, `${measured.config.basket_version}, USDA calibrated`);
+
+  el("week-one").innerHTML = `<p><b>This is week one.</b> ${measured.notes[0] || ""}
+    Week-over-week and year-over-year changes appear as the series accumulates; the price index itself starts after
+    ${measured.config.index_publish_min_weeks ?? 12} weeks. Until then the regional reconstruction below carries the history.</p>`;
+
+  /* ---- map (regional, latest month) ---- */
+  const monthList = regional.basket.filter((b) => b.status === "published").map((b) => b.month);
+  const hoursByGeo = new Map(regional.geos.map((g) => [g.geo_id, new Map(g.series.map((s) => [s.month, s]))]));
+  const latest = [...hoursByGeo.get("45").entries()].filter(([, s]) => s.hours_to_basket != null).at(-1)?.[0];
+  el("map-sub").textContent = `${fmt.month(latest)} · regional prices, local wages`;
+  el("map-title").textContent = "Hours to buy the week's basket";
+
+  const countyGeos = regional.geos.filter((g) => g.geo_type === "county");
+  const values = new Map(countyGeos.map((g) => {
+    const s = hoursByGeo.get(g.geo_id).get(latest);
+    return [g.geo_id, s && s.hours_to_basket != null
+      ? { value: s.hours_to_basket, label: fmt.hours(s.hours_to_basket), extra: `wage ${fmt.usd0(s.avg_weekly_wage)}/week` }
+      : { value: null, label: "no data" }];
+  }));
+  const measuredIds = new Set(measuredCounties.map((g) => g.geo_id));
+  let selected = measuredIds.values().next().value || "45079";
+
+  const mapHolder = el("map-holder");
+  let map = choropleth(mapHolder, { geo: counties, values, selected, rings: measuredIds, unit: "hours to basket", onSelect: pick });
+  rampLegend(el("map-legend"), map.bins, (v) => fmt.hours1(v) + " h");
+  el("map-caption").innerHTML = `Shaded by hours of average local work, ${fmt.month(latest)}. A ring marks a county where
+    we also collect prices in stores. Boundaries: U.S. Census Bureau cartographic file.`;
+
+  attachTableToggle(el("map-table"), el("fig-map"), () => tableView({
+    caption: `Hours to basket by county, ${fmt.month(latest)} (regional reconstruction).`,
+    columns: [
+      { label: "County", get: (r) => r.name },
+      { label: "Hours", num: true, get: (r) => fmt.hours1(r.hours) },
+      { label: "Avg weekly wage", num: true, get: (r) => fmt.usd0(r.wage) },
+      { label: "Prices measured here", get: (r) => (measuredIds.has(r.geo_id) ? "yes" : "—") },
+    ],
+    rows: countyGeos.map((g) => {
+      const s = hoursByGeo.get(g.geo_id).get(latest) || {};
+      return { geo_id: g.geo_id, name: g.name, hours: s.hours_to_basket, wage: s.avg_weekly_wage };
+    }).sort((a, b) => (b.hours ?? -1) - (a.hours ?? -1)),
+  }));
+
+  /* ---- county selector + hours chart ---- */
+  const select = el("county-select");
+  select.innerHTML = countyGeos.map((g) => `<option value="${g.geo_id}">${g.name}</option>`).join("");
+  select.value = selected;
+  select.addEventListener("change", () => pick(select.value));
+
+  const hoursHolder = el("hours-holder");
+  let hoursChart = null, hoursSeries = [];
+
+  function pick(geoId) {
+    selected = geoId;
+    select.value = geoId;
+    mapHolder.querySelectorAll(".county").forEach((p) => p.setAttribute("aria-pressed", String(p.getAttribute("aria-label").startsWith(nameOf(geoId)))));
+    drawHours();
+  }
+  const nameOf = (id) => (regional.geos.find((g) => g.geo_id === id) || {}).name;
+
+  function pts(geoId) {
+    const m = hoursByGeo.get(geoId);
+    return monthList.map((mo) => ({ x: mo, y: (m.get(mo) || {}).hours_to_basket ?? null }));
+  }
+
+  function drawHours() {
+    hoursSeries = [
+      { id: "45", label: "South Carolina", color: "--context", points: pts("45") },
+      { id: selected, label: nameOf(selected), color: "--series-1", points: pts(selected) },
+    ];
+    hoursHolder.innerHTML = "";
+    hoursChart = lineChart(hoursHolder, { series: hoursSeries, yFormat: (v) => v.toFixed(1), yTitle: "Hours to basket" });
+    el("hours-legend").innerHTML = hoursSeries.map((s) =>
+      `<span class="key"><i class="swatch" style="background:var(${s.color})"></i>${s.label}</span>`).join("");
+    if (el("hours-table").getAttribute("aria-pressed") === "true") {
+      el("hours-table").click(); el("hours-table").click();
+    }
+  }
+  drawHours();
+
+  attachTableToggle(el("hours-table"), el("fig-hours"), () => tableView({
+    caption: `Monthly hours to basket, ${nameOf(selected)} and South Carolina.`,
+    columns: [
+      { label: "Month", get: (r) => fmt.month(r.month) },
+      { label: nameOf(selected), num: true, get: (r) => fmt.hours1(r.county) },
+      { label: "South Carolina", num: true, get: (r) => fmt.hours1(r.state) },
+    ],
+    rows: [...monthList].reverse().map((mo) => ({
+      month: mo,
+      county: (hoursByGeo.get(selected).get(mo) || {}).hours_to_basket,
+      state: (hoursByGeo.get("45").get(mo) || {}).hours_to_basket,
+    })),
+  }));
+
+  /* ---- cost vs CPI, indexed ---- */
+  const cpiId = Object.keys(regional.comparison).find((k) => k.startsWith("CUUR0300"));
+  const cpi = new Map(regional.comparison[cpiId].values.map((v) => [v.month, v.value]));
+  const costs = regional.basket.filter((b) => b.cost != null);
+  const base0 = costs[0], cpiBase = cpi.get(base0.month);
+  const costSeries = [
+    { id: "basket", label: "Our regional basket", color: "--series-1",
+      points: regional.basket.map((b) => ({ x: b.month, y: b.cost == null ? null : (b.cost / base0.cost) * 100 })) },
+    { id: "cpi", label: "BLS food at home, South", color: "--series-2",
+      points: regional.basket.map((b) => ({ x: b.month, y: cpi.has(b.month) ? (cpi.get(b.month) / cpiBase) * 100 : null })) },
+  ];
+  lineChart(el("cost-holder"), { series: costSeries, yFormat: (v) => v.toFixed(0), yTitle: "Index" });
+  el("cost-legend").innerHTML = costSeries.map((s) =>
+    `<span class="key"><i class="swatch" style="background:var(${s.color})"></i>${s.label}</span>`).join("") +
+    `<span class="key muted">${fmt.month(base0.month)} = 100</span>`;
+  const lastIdx = costSeries[0].points.filter((p) => p.y != null).at(-1).y;
+  const lastCpi = costSeries[1].points.filter((p) => p.y != null).at(-1).y;
+  el("cost-caption").textContent =
+    `A check on the reconstruction: both move the same way, through the same shocks. Since ${fmt.month(base0.month)} ` +
+    `our 22-item basket is up ${(lastIdx - 100).toFixed(0)}% and the full food-at-home index is up ${(lastCpi - 100).toFixed(0)}%. ` +
+    `The gap is composition — this basket is weighted toward milk, produce and starches, while the index covers ` +
+    `everything a household buys, including the packaged and prepared foods we do not price.`;
+
+  attachTableToggle(el("cost-table"), el("fig-cost"), () => tableView({
+    caption: `Regional basket cost and the BLS food-at-home index for the South, ${fmt.month(base0.month)} = 100.`,
+    columns: [
+      { label: "Month", get: (r) => fmt.month(r.month) },
+      { label: "Basket cost", num: true, get: (r) => fmt.usd(r.cost) },
+      { label: "Basket, indexed", num: true, get: (r) => fmt.num(r.idx, 1) },
+      { label: "BLS food at home, indexed", num: true, get: (r) => fmt.num(r.cpi, 1) },
+    ],
+    rows: [...regional.basket].reverse().map((b) => ({
+      month: b.month, cost: b.cost,
+      idx: b.cost == null ? null : (b.cost / base0.cost) * 100,
+      cpi: cpi.has(b.month) ? (cpi.get(b.month) / cpiBase) * 100 : null,
+    })),
+  }));
+
+  /* ---- overlap ---- */
+  const ov = regional.overlap.at(-1);
+  el("overlap-body").innerHTML = ov ? `
+    <p>The two series can be compared directly on the ${regional.config.concepts.length} items that appear in both.
+      In the week of ${fmt.date(ov.week)}, those items cost <b>${fmt.usd(ov.measured_cost)}</b> at
+      ${ov.n_stores} South Carolina stores, against <b>${fmt.usd(ov.regional_cost)}</b> as the BLS average for the
+      whole South in ${fmt.month(ov.regional_month.slice(0, 7))} —
+      <b>${((1 - ov.measured_over_regional) * 100).toFixed(0)}% lower</b>.</p>
+    <p class="muted">Read that carefully. We price store brands; BLS averages every brand and outlet. One week, one
+      banner, three stores. It is a hint about where South Carolina sits, not a finding — and it is exactly the
+      comparison the measured series is being built to replace.</p>` :
+    `<p class="muted">No overlapping week yet.</p>`;
+
+  el("built").textContent = `Measured snapshot ${measured.week} (method ${measured.method_version}), ` +
+    `regional snapshot ${regional.latest_month} (method ${regional.method_version}). ` +
+    `Generated ${new Date(measured.generated_at).toLocaleString("en-US", { timeZone: "America/New_York" })} ET.`;
+} catch (err) {
+  fail(document.querySelector("main"), err);
+  console.error(err);
+}
+</script>
+</body>
+</html>

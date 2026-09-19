@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coverage · SC Price Observatory</title>
+<meta name="description" content="Which South Carolina counties are measured, which are thin, and where the historical reconstruction has data.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🛒</text></svg>">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">SC Price Observatory <span>· groceries</span></a>
+    <nav class="site" aria-label="Main">
+      <a href="index.html">Home</a><a href="method.html">Method</a><a href="basket.html">Basket</a>
+      <a href="coverage.html">Coverage</a><a href="data.html">Data</a>
+      <a href="https://github.com/jimmyardis/sc-price-observatory">Code</a>
+    </nav>
+    <button class="theme" type="button">Dark</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Coverage</h1>
+  <p class="lede">What is actually measured, stated plainly. A place with too little data is labelled, rolled up, or
+    left blank — never filled in to make a map look complete.</p>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>Status of every geography, this week</h2>
+    <p class="small muted">
+      <span class="status published">published</span> — meets the coverage rule ·
+      <span class="status thin_coverage">thin coverage</span> — too few stores or banners, rolls up ·
+      <span class="status suppressed">suppressed</span> — too much of the basket imputed ·
+      <span class="status no_data">no data</span> — nothing collected here yet
+    </p>
+    <div id="geo-table"></div>
+  </section>
+
+  <section>
+    <h2>The coverage rule</h2>
+    <p id="rule-text"></p>
+    <p>Why a banner minimum and not just a store count: three stores of the same chain share pricing zones and
+      promotions, so they are closer to one observation than three. A county with three stores of one banner is
+      honest data about that banner, not about the county.</p>
+  </section>
+
+  <section>
+    <h2>Historical reconstruction</h2>
+    <p id="regional-text"></p>
+    <div id="wage-note" class="note-box reconstruction"></div>
+  </section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <p><a href="method.html">Method</a> · <a href="data.html">Data</a> ·
+     <a href="https://github.com/jimmyardis/sc-price-observatory">Source code</a></p>
+  <p id="built"></p>
+</div></footer>
+
+<script type="module">
+import { SNAP, loadJSON, fail, fmt, initChrome, tableView } from "./assets/app.js";
+initChrome();
+const el = (id) => document.getElementById(id);
+
+try {
+  const [m, r] = await Promise.all([loadJSON(SNAP.measured), loadJSON(SNAP.regional)]);
+  const counties = m.geos.filter((g) => g.geo_type === "county");
+  const measured = counties.filter((g) => g.coverage.n_stores > 0);
+  const stores = m.geos.find((g) => g.geo_id === "45").coverage.n_stores;
+  const obs = m.geos.find((g) => g.geo_id === "45").coverage.n_obs;
+
+  const kpi = (label, value, note) => `<div class="kpi"><div class="label">${label}</div><div class="value">${value}</div><div class="note">${note}</div></div>`;
+  el("kpis").innerHTML =
+    kpi("Stores collected", stores, `in ${measured.length} of ${counties.length} counties`) +
+    kpi("Prices this week", obs.toLocaleString("en-US"), `week of ${fmt.date(m.week)}`) +
+    kpi("Banners", m.config.banners_collected.length, m.config.banners_collected.map((b) => b.replace(/_/g, " ")).join(", ")) +
+    kpi("Counties in the reconstruction", r.geos.filter((g) => g.geo_type === "county").length, "monthly, all of South Carolina");
+
+  const order = { published: 0, thin_coverage: 1, suppressed: 2, no_data: 3 };
+  el("geo-table").appendChild(tableView({
+    caption: `Measured coverage for the week of ${fmt.date(m.week)}.`,
+    columns: [
+      { label: "Geography", get: (g) => g.name },
+      { label: "Type", get: (g) => g.geo_type },
+      { label: "Status", get: (g) => `<span class="status ${g.status}">${g.status.replace(/_/g, " ")}</span>` },
+      { label: "Stores", num: true, get: (g) => g.coverage.n_stores || "—" },
+      { label: "Banners", num: true, get: (g) => g.coverage.n_banners || "—" },
+      { label: "Prices", num: true, get: (g) => (g.coverage.n_obs ? g.coverage.n_obs.toLocaleString("en-US") : "—") },
+      { label: "Imputed", num: true, get: (g) => (g.coverage.imputed_share == null ? "—" : (g.coverage.imputed_share * 100).toFixed(0) + "%") },
+      { label: "Note", get: (g) => `<span class="muted small">${g.rolled_up_to ? "rolls up to " + (m.geos.find((x) => x.geo_id === g.rolled_up_to)?.name || g.rolled_up_to) : (g.reasons[0] || "")}</span>` },
+    ],
+    rows: [...m.geos].sort((a, b) =>
+      (order[a.status] - order[b.status]) || b.coverage.n_stores - a.coverage.n_stores || a.name.localeCompare(b.name)),
+  }));
+
+  const rule = m.config.coverage_rule;
+  el("rule-text").innerHTML = `A county publishes its own number when it has at least <b>${rule.min_stores} stores</b>
+    across at least <b>${rule.min_banners} banners</b>. Otherwise it is marked thin coverage and rolls up to its region,
+    or to the state. A geography is also suppressed if more than
+    <b>${Math.round(m.config.suppress_imputed_share_above * 100)}%</b> of its basket had to be imputed that week.`;
+
+  const first = Object.entries(r.config.wage_first_quarter).filter(([, v]) => v).map(([, v]) => v).sort();
+  const withHours = r.geos.filter((g) => g.series.some((s) => s.hours_to_basket != null)).length;
+  el("regional-text").innerHTML = `The reconstruction covers <b>${r.geos.filter((g) => g.geo_type === "county").length}
+    counties</b>, monthly, from <b>${fmt.month(r.basket[0].month)}</b> to <b>${fmt.month(r.latest_month)}</b>. Prices in
+    it are regional, not local, so coverage there is about <em>wages</em>: a county appears in a month once its QCEW
+    wage exists for that quarter. ${withHours} geographies currently have hours.`;
+
+  el("wage-note").innerHTML = `<p>County wages are loaded from the earliest quarter available
+    (<b>${first.length ? fmt.month(first[0].slice(0, 7)) : "—"}</b> at present). Months before any wage data are shown
+    as no data and fill in as the older quarters load — they never change a number that has already been published.</p>`;
+
+  el("built").textContent = `Measured snapshot ${m.week} (method ${m.method_version}); regional snapshot ${r.latest_month} (method ${r.method_version}).`;
+} catch (err) { fail(document.querySelector("main"), err); console.error(err); }
+</script>
+</body>
+</html>

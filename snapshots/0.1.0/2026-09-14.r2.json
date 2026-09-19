@@ -2,7 +2,7 @@
  "schema": "sc-price-observatory/snapshot@1",
  "week": "2026-09-14",
  "method_version": "0.1.0",
- "generated_at": "2026-09-19T22:45:47.226794+00:00",
+ "generated_at": "2026-09-19T22:41:02.392251+00:00",
  "config": {
   "weights_version": "2025-12",
   "weights_verified": true,
@@ -12,12 +12,10 @@
   "basket_version": "tfp2021-v1",
   "basket_status": "final",
   "household": "USDA reference family of four (man and woman 20-50, children 6-8 and 9-11)",
-  "household_short": "a family of four",
   "banners_collected": [
    "kroger",
    "harris_teeter"
   ],
-  "index_publish_min_weeks": 12,
   "headline_series": "shelf prices only (promotions excluded)",
   "suppress_imputed_share_above": 0.25,
   "coverage_rule": {

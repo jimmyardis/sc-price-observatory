@@ -42,6 +42,38 @@
    "method_version": "regional-0.1.0",
    "revision": 1,
    "published_at": "2026-09-19T22:39:13.600459+00:00"
+  },
+  {
+   "path": "0.1.0/2026-09-14.r2.json",
+   "sha256": "870c7f15d4ed825edd5aaaf086137dcebb45d3bccb5f9630e7b0c9e7587c874c",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 2,
+   "published_at": "2026-09-19T22:41:02.392251+00:00"
+  },
+  {
+   "path": "0.1.0/2026-09-14.r2_levels.csv",
+   "sha256": "058dd2daa41c3c3df100a106a8d6d559512a9f185736d49873e709389f98320b",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 2,
+   "published_at": "2026-09-19T22:41:02.392251+00:00"
+  },
+  {
+   "path": "0.1.0/2026-09-14.r3.json",
+   "sha256": "cff7f3d412b8dba371218048e545aee28dbd6b3d1275d57ca9907dbf9bdca23a",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 3,
+   "published_at": "2026-09-19T22:45:47.226794+00:00"
+  },
+  {
+   "path": "0.1.0/2026-09-14.r3_levels.csv",
+   "sha256": "058dd2daa41c3c3df100a106a8d6d559512a9f185736d49873e709389f98320b",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 3,
+   "published_at": "2026-09-19T22:45:47.226794+00:00"
   }
  ]
 }

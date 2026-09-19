@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method · SC Price Observatory</title>
+<meta name="description" content="How South Carolina grocery prices are collected, weighted, turned into an index and a time price, and what the regional reconstruction is.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🛒</text></svg>">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">SC Price Observatory <span>· groceries</span></a>
+    <nav class="site" aria-label="Main">
+      <a href="index.html">Home</a><a href="method.html">Method</a><a href="basket.html">Basket</a>
+      <a href="coverage.html">Coverage</a><a href="data.html">Data</a>
+      <a href="https://github.com/jimmyardis/sc-price-observatory">Code</a>
+    </nav>
+    <button class="theme" type="button">Dark</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Method</h1>
+  <p class="lede">Two series live here. One is <b>measured</b>: prices collected in South Carolina stores every week.
+    The other is a <b>reconstruction</b>, built only from published federal data, that covers the years before
+    collection started. They are never mixed, and every page says which one you are looking at.</p>
+
+  <section>
+    <h2>The measured series</h2>
+    <h3>What gets priced</h3>
+    <p>A fixed list of items, each standing for a category of grocery spending. Every item is priced at its
+      store-brand or unbranded version for the headline basket; where a national brand exists, it is priced too,
+      which is what makes the brand-gap comparison possible. Quantities come from the USDA Thrifty Food Plan
+      (see <a href="basket.html">Basket</a>).</p>
+
+    <h3>Collecting</h3>
+    <p>Prices come from retailer APIs, one store at a time, on a weekly schedule (Tuesdays, overnight). A collection
+      week is the Monday of that week. Each observation records the price, the pack size <em>as observed</em> and the
+      unit price it implies — pack size is never assumed, because package sizes shrink. Shelf prices and promotional
+      prices are stored separately: the headline uses <b>shelf prices only</b>, and a second series,
+      <span class="muted">promo-inclusive</span>, uses the lowest price a shopper could have paid.</p>
+    <p>Observations are <b>append-only</b>. A re-collection adds rows; it never edits them. The effective price for a
+      week is the latest row for that store, item and price type.</p>
+
+    <h3>From prices to an index</h3>
+    <ul>
+      <li><b>Matched model.</b> An item only contributes a price change if the same item was observed at the same
+        store in both this week and the previous collection week. An item that reappears after a gap re-enters at its
+        observed price and contributes no change — so a reappearance can never be read as inflation.</li>
+      <li><b>Jevons.</b> Within a category, price changes are combined as a geometric mean.</li>
+      <li><b>Official weights.</b> Categories are combined using the BLS CPI-U relative importances
+        (<span id="weights-version" class="muted"></span>), renormalized over the categories that have data that week.</li>
+      <li><b>Chaining and base.</b> The index chains week to week; the base is the first full calendar month of
+        collection. Until that month exists the base is provisional, and the index is not published at all until
+        <span id="min-weeks"></span> weeks of baseline exist.</li>
+      <li><b>Imputation and suppression.</b> A missing pair carries its category's change forward and is counted; after
+        four consecutive missing weeks it is dropped. If more than
+        <span id="imputed-threshold"></span> of a geography's basket is imputed, the cell is <b>suppressed</b> rather
+        than published.</li>
+    </ul>
+
+    <h3>The time price</h3>
+    <p>Hours to basket = weekly basket cost ÷ (average weekly wage ÷ 40). Wages are the QCEW average weekly wage for
+      the county, all industries and ownerships — the same source for both series. Regions are employment-weighted
+      from their counties. Between quarters the wage is interpolated; past the midpoint of the last published quarter
+      it is held flat and flagged <b>projected</b>, because the next quarter will move it.</p>
+
+    <h3>Coverage</h3>
+    <p>A county is published when it has at least 3 stores across at least 2 banners. Below that it is
+      <b>thin coverage</b> and rolls up to its region, or to the state. Counties are never interpolated to fill a map.</p>
+  </section>
+
+  <section id="regional">
+    <h2>The regional reconstruction: &ldquo;regional prices, local wages&rdquo;</h2>
+    <p>Store-level South Carolina prices from before collection started cannot be recovered. Retailer APIs return
+      only today's price, and web archives do not hold store-specific prices. The only true historical source is
+      commercial scanner data, which is paid and academic-only.</p>
+    <p><b>What we refuse to do:</b> take today's measured basket and roll it backwards with a regional CPI. That
+      produces a convincing chart and is exactly the thing this project exists to replace — a national number with a
+      formula on top. It would look like measurement without being it.</p>
+    <p><b>What we do instead</b> is build a separate series from published inputs only:</p>
+    <ul>
+      <li><b>Prices:</b> BLS average prices for the South Census region — actual dollars per pound, published monthly.
+        Of the basket's <span id="n-all"></span> items, <span id="n-priced"></span> have a like-for-like South series;
+        the rest are excluded by name and reason (listed on the <a href="basket.html">Basket</a> page). The set is
+        fixed for the whole history, so months are comparable.</li>
+      <li><b>Wages:</b> QCEW, per county — the same measured local wages as above. This is the part of the number
+        that is genuinely local, and it is also the part that varies most across South Carolina.</li>
+      <li><b>Gaps:</b> BLS does not publish every item every month. A missing price moves with that same item's U.S.
+        change; failing that, with the average change of the items BLS did publish for the South; failing that, the
+        last price is carried for at most two months. Gaps are filled <b>only from the past</b>, so publishing a new
+        month never changes an old one. The share of the basket that was imputed is published, and any month above
+        <span id="reg-threshold"></span> is suppressed.</li>
+    </ul>
+    <p>Treat it as an estimate of the historical pattern, not a measurement of South Carolina prices. The measured
+      series supersedes it as it accumulates.</p>
+  </section>
+
+  <section>
+    <h2>Quality gates</h2>
+    <p>Nothing publishes unless every gate passes. A gate can only be bypassed by a human-recorded exception, and the
+      exception is published with the data.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Gate</th><th scope="col">What it stops</th></tr></thead>
+        <tbody>
+          <tr><td>unit_price_outlier</td><td class="wrap-cell">A unit price more than 5× or less than 0.2× its own trailing 8-week median.</td></tr>
+          <tr><td>imputed_share</td><td class="wrap-cell">Publishing a geography whose basket is too heavily imputed.</td></tr>
+          <tr><td>banner_store_drop</td><td class="wrap-cell">A silent collection failure: a banner's store count falling more than 20% in a week.</td></tr>
+          <tr><td>stratum_relative</td><td class="wrap-cell">A published category moving more than ±10% in one week.</td></tr>
+          <tr><td>unknown_price_type</td><td class="wrap-cell">More than 10% of a week's prices being of unknown type.</td></tr>
+          <tr><td>week_has_observations</td><td class="wrap-cell">Publishing a week with no prices at all.</td></tr>
+          <tr><td>config_verified</td><td class="wrap-cell">Publishing on unverified weights or a basket no human has signed off.</td></tr>
+          <tr><td>concepts_accounted</td><td class="wrap-cell">An item silently dropping out of the reconstruction without a stated reason.</td></tr>
+          <tr><td>wages_cover_history</td><td class="wrap-cell">A county missing a wage for a month other counties have.</td></tr>
+          <tr><td>no_silent_revision</td><td class="wrap-cell">An already-published number changing under the same method version.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Revisions</h2>
+    <p>Recomputing is free; changing a <em>published</em> number is not. Published snapshot files are never
+      overwritten — a re-publication of the same period is written alongside as a new revision, and every file ever
+      published stays listed with its checksum on the <a href="data.html">Data</a> page. To change a published number
+      the method version must change, and both versions stay downloadable.</p>
+    <p>One exception is declared in advance: hours computed on a <b>projected</b> wage are provisional by definition,
+      and move when the next quarter of wage data is published.</p>
+  </section>
+
+  <section>
+    <h2>What this does not tell you</h2>
+    <ul>
+      <li><b>One banner so far.</b> Phase 0 collects from Kroger-family stores only, in one county. Other chains are
+        deliberately not scraped pending a terms-of-service answer. Until more banners are in, the level is
+        &ldquo;what these stores charge,&rdquo; not &ldquo;what South Carolina charges.&rdquo;</li>
+      <li><b>Stand-ins.</b> Each item stands for a whole category. All seafood is priced as canned tuna; whole grains
+        are priced with white bread, rice and pasta. That makes the basket cheaper than the diet USDA describes.</li>
+      <li><b>A nutritious diet, not a typical one.</b> The Thrifty Food Plan is what a healthy budget diet costs. It
+        holds more milk, produce and dried beans, and far less soda and snack food, than a typical cart.</li>
+      <li><b>Not the same as USDA's national figure.</b> USDA prices the full category mix; we price the cheapest
+        representative of each. A gap between the two numbers is mostly method, not geography.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <p><a href="data.html">Data</a> · <a href="https://github.com/jimmyardis/sc-price-observatory">Source code</a> ·
+    Decision records live in <span class="muted">docs/adr/</span> in the repository.</p>
+  <p id="built"></p>
+</div></footer>
+
+<script type="module">
+import { SNAP, loadJSON, fmt, initChrome } from "./assets/app.js";
+initChrome();
+const el = (id) => document.getElementById(id);
+try {
+  const [m, r] = await Promise.all([loadJSON(SNAP.measured), loadJSON(SNAP.regional)]);
+  el("weights-version").textContent = m.config.weights_source || m.config.weights_version;
+  el("min-weeks").textContent = m.config.index_publish_min_weeks ?? 12;
+  el("imputed-threshold").textContent = Math.round(m.config.suppress_imputed_share_above * 100) + "%";
+  el("reg-threshold").textContent = Math.round(r.config.suppress_imputed_share_above * 100) + "%";
+  el("n-priced").textContent = r.config.concepts.length;
+  el("n-all").textContent = r.config.concepts.length + r.config.excluded.length;
+  el("built").textContent = `Measured method ${m.method_version}, week ${m.week}. Regional method ${r.method_version}, through ${fmt.month(r.latest_month)}.`;
+} catch (e) { console.error(e); }
+</script>
+</body>
+</html>

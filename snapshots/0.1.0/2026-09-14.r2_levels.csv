@@ -1,0 +1,52 @@
+week,geo_id,name,geo_type,status,basket_cost,basket_cost_national,basket_cost_promo_incl,avg_weekly_wage,wage_is_projected,hours_to_basket,index_value,n_stores,n_banners,imputed_share,method_version
+2026-09-14,45,South Carolina,state,published,183.3,213.16,178.83,1296.0,True,5.66,,3,1,0.0,0.1.0
+2026-09-14,region:upstate,Upstate,region,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,region:midlands,Midlands,region,published,183.3,213.16,178.83,1249.69,True,5.87,,3,1,0.0,0.1.0
+2026-09-14,region:pee_dee,Pee Dee,region,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,region:lowcountry,Lowcountry,region,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45001,Abbeville County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45003,Aiken County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45005,Allendale County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45007,Anderson County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45009,Bamberg County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45011,Barnwell County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45013,Beaufort County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45015,Berkeley County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45017,Calhoun County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45019,Charleston County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45021,Cherokee County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45023,Chester County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45025,Chesterfield County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45027,Clarendon County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45029,Colleton County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45031,Darlington County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45033,Dillon County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45035,Dorchester County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45037,Edgefield County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45039,Fairfield County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45041,Florence County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45043,Georgetown County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45045,Greenville County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45047,Greenwood County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45049,Hampton County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45051,Horry County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45053,Jasper County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45055,Kershaw County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45057,Lancaster County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45059,Laurens County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45061,Lee County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45063,Lexington County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45065,McCormick County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45067,Marion County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45069,Marlboro County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45071,Newberry County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45073,Oconee County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45075,Orangeburg County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45077,Pickens County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45079,Richland County,county,thin_coverage,,,,,,,,3,1,0.0,0.1.0
+2026-09-14,45081,Saluda County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45083,Spartanburg County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45085,Sumter County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45087,Union County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45089,Williamsburg County,county,no_data,,,,,,,,0,0,,0.1.0
+2026-09-14,45091,York County,county,no_data,,,,,,,,0,0,,0.1.0

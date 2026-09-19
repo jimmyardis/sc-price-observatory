@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data · SC Price Observatory</title>
+<meta name="description" content="Every published file, with its checksum, including revisions. The site reads these files and nothing else.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🛒</text></svg>">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">SC Price Observatory <span>· groceries</span></a>
+    <nav class="site" aria-label="Main">
+      <a href="index.html">Home</a><a href="method.html">Method</a><a href="basket.html">Basket</a>
+      <a href="coverage.html">Coverage</a><a href="data.html">Data</a>
+      <a href="https://github.com/jimmyardis/sc-price-observatory">Code</a>
+    </nav>
+    <button class="theme" type="button">Dark</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Data</h1>
+  <p class="lede">The site reads published snapshot files and nothing else — no database, no API. Everything below is
+    the same file the charts use. Published files are never overwritten: a re-publication is written alongside as a
+    new revision, and every file ever published stays listed here with its SHA-256.</p>
+
+  <section>
+    <h2>Current</h2>
+    <div class="kpis" id="current"></div>
+  </section>
+
+  <section>
+    <h2>Every published file</h2>
+    <div id="manifest-table"></div>
+  </section>
+
+  <section>
+    <h2>Using it</h2>
+    <h3>Shape of the files</h3>
+    <ul>
+      <li><code>snapshots/latest.json</code> — the most recent measured week (schema
+        <span class="muted">sc-price-observatory/snapshot@1</span>): headline, every geography with status and levels,
+        the history behind the revision gate, and the basket.</li>
+      <li><code>snapshots/regional_latest.json</code> — the historical reconstruction (schema
+        <span class="muted">sc-price-observatory/regional@1</span>): monthly basket cost, per-county hours, the BLS
+        comparison series, and the week-by-week overlap with the measured series.</li>
+      <li><code>…_levels.csv</code> and <code>…_hours.csv</code> — the same numbers as flat CSV, one row per geography
+        and period.</li>
+      <li><code>…_concepts.csv</code> — for the reconstruction, every item in every month with the price used and
+        whether it was published by BLS, imputed, or carried.</li>
+    </ul>
+
+    <h3>Terms</h3>
+    <p>The data is free to use, including commercially, with attribution. The underlying federal inputs (BLS, USDA,
+      Census) are public domain. Prices collected from retailers are facts about advertised prices, recorded for
+      research and published in aggregate.</p>
+
+    <h3>Citation</h3>
+    <p class="small muted" id="citation"></p>
+
+    <h3>Checking a number yourself</h3>
+    <p>Every published figure is regenerable from the raw observations plus a method version. The repository holds the
+      collectors, the method, the quality gates, and the configuration that defines the basket and the weights. Clone
+      it, run the pipeline, and compare against the snapshot's checksum.</p>
+  </section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <p><a href="method.html">Method</a> · <a href="coverage.html">Coverage</a> ·
+     <a href="https://github.com/jimmyardis/sc-price-observatory">Source code</a></p>
+  <p id="built"></p>
+</div></footer>
+
+<script type="module">
+import { SNAP, loadJSON, fail, fmt, initChrome, tableView } from "./assets/app.js";
+initChrome();
+const el = (id) => document.getElementById(id);
+
+try {
+  const [m, r, manifest] = await Promise.all([
+    loadJSON(SNAP.measured), loadJSON(SNAP.regional), loadJSON(SNAP.manifest),
+  ]);
+
+  const kpi = (label, value, note) => `<div class="kpi"><div class="label">${label}</div><div class="value">${value}</div><div class="note">${note}</div></div>`;
+  el("current").innerHTML =
+    kpi("Measured week", m.week, `<a href="snapshots/latest.json">latest.json</a> · method ${m.method_version}`) +
+    kpi("Reconstruction", fmt.month(r.latest_month), `<a href="snapshots/regional_latest.json">regional_latest.json</a> · method ${r.method_version}`) +
+    kpi("Files published", manifest.files.length, `<a href="snapshots/manifest.json">manifest.json</a>`) +
+    kpi("Months of history", r.basket.length, `from ${fmt.month(r.basket[0].month)}`);
+
+  el("manifest-table").appendChild(tableView({
+    caption: "Every file ever published, newest first. A revision number above 1 means the same period was published again; the earlier file is still here.",
+    columns: [
+      { label: "File", get: (f) => `<a href="snapshots/${f.path}">${f.path}</a>` },
+      { label: "Series", get: (f) => (f.kind === "regional_reconstruction" ? "reconstruction" : "measured") },
+      { label: "Period", get: (f) => (f.week ? f.week : fmt.month(f.month)) },
+      { label: "Method", get: (f) => f.method_version },
+      { label: "Rev", num: true, get: (f) => f.revision },
+      { label: "Published", get: (f) => new Date(f.published_at).toLocaleString("en-US", { timeZone: "America/New_York" }) },
+      { label: "SHA-256", get: (f) => `<span class="muted small">${f.sha256.slice(0, 16)}…</span>` },
+    ],
+    rows: [...manifest.files].reverse(),
+  }));
+
+  el("citation").textContent =
+    `South Carolina Price Observatory, measured snapshot ${m.week} (method ${m.method_version}) and regional ` +
+    `reconstruction ${r.latest_month} (method ${r.method_version}). Retrieved ${new Date().toISOString().slice(0, 10)} ` +
+    `from https://jimmyardis.github.io/sc-price-observatory/`;
+
+  el("built").textContent = `${manifest.files.length} files listed. Generated ${new Date(m.generated_at).toLocaleString("en-US", { timeZone: "America/New_York" })} ET.`;
+} catch (err) { fail(document.querySelector("main"), err); console.error(err); }
+</script>
+</body>
+</html>

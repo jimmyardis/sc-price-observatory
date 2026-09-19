@@ -179,6 +179,7 @@ def build(db, cfg: dict, week: date, items: list[dict], weights_doc: dict, baske
         "in_standard_basket": std.get(i["concept"]) == i["item_id"],
         "in_national_basket": nat.get(i["concept"]) == i["item_id"],
         "weekly_quantity": basket_doc["weekly_quantity"].get(i["concept"]),
+        "quantity_from": basket_doc.get("provenance", {}).get(i["concept"]),
     } for i in items if i["active"]]
     notes = []
     if not any(g["index"] for g in geos_out):
@@ -188,8 +189,11 @@ def build(db, cfg: dict, week: date, items: list[dict], weights_doc: dict, baske
         "schema": SCHEMA, "week": w, "method_version": method,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "config": {"weights_version": weights_doc.get("weights_version"), "weights_verified": weights_doc.get("verified"),
+                   "weights_source": weights_doc.get("source"), "basket_source": basket_doc.get("source"),
+                   "basket_rule": basket_doc.get("rule"),
                    "basket_version": basket_doc.get("basket_version"), "basket_status": basket_doc.get("status"),
-                   "household": household, "banners_collected": cfg["banners"],
+                   "household": household, "household_short": basket_doc.get("household_short"),
+                   "banners_collected": cfg["banners"], "index_publish_min_weeks": cfg["index_publish_min_weeks"],
                    "headline_series": "shelf prices only (promotions excluded)",
                    "suppress_imputed_share_above": cfg["suppress_imputed_share_above"],
                    "coverage_rule": cfg["coverage_rule"]},
