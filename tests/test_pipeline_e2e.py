@@ -140,6 +140,26 @@ def test_silent_revision_blocks_until_method_version_bumps(db, tmp_dirs):
     assert result["published"], result["qa"]
 
 
+def test_new_wage_quarter_moves_only_projected_hours_and_does_not_block(db, tmp_dirs):
+    cfg, weights, basket = verified_configs()
+    seed(db)
+    compute(db, cfg, weights, basket)
+    first = export(db, cfg, weights, basket, LAST - timedelta(weeks=1))
+    assert first["published"], first["qa"]
+
+    # QCEW publishes the next quarter: projected weeks move, and that is not a silent revision
+    for gid, wage in (("45", 1150), ("45079", 1350), ("45063", 1050), ("region:midlands", 1200)):
+        db.upsert("wages", {"geo_id": gid, "quarter": "2026-07-01", "avg_weekly_wage": wage}, ["geo_id", "quarter"])
+    db.commit()
+    compute(db, cfg, weights, basket)
+    result = export(db, cfg, weights, basket, LAST)
+    assert result["published"], result["qa"]
+
+    old = json.loads(next((tmp_dirs[1] / cfg["method_version"]).glob(f"{LAST - timedelta(weeks=1)}.json")).read_text())
+    # the seed has one wage quarter, so every seeded week sits past its midpoint: all provisional
+    assert all(h["wage_is_projected"] for h in old["history"]["45"])
+
+
 def test_qa_outlier_and_store_drop_gates(db):
     obs = pd.DataFrame(
         [(i, f"{START + timedelta(weeks=n)}", START + timedelta(weeks=n), "kroger:1", "milk", 1.0, "shelf")

@@ -146,6 +146,7 @@ def build(db, cfg: dict, week: date, items: list[dict], weights_doc: dict, baske
             history[gid] = [
                 {"week": wk, "basket_cost": cost.get((gid, wk, "shelf", "standard")),
                  "hours_to_basket": _f((tprice.get((gid, wk)) or {}).get("hours_to_basket")),
+                 "wage_is_projected": bool((tprice.get((gid, wk)) or {}).get("wage_is_projected")),
                  "index_value": _f(idx[(gid, wk, "shelf")]["index_value"]) if entry["index"] else None,
                  "imputed_share": _f(idx[(gid, wk, "shelf")]["imputed_share"])}
                 for wk in weeks_of_history

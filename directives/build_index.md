@@ -13,7 +13,7 @@
 4. **Imputation:** missing in-sample pairs get the stratum relative (or the all-strata relative) for basket cost and `imputed_share`. Dropped after 4 consecutive missing weeks.
 5. **Base:** the first full calendar month of collection = 100, else provisional.
 6. **Basket cost:** Σ over concepts of qty × mean unit price across the geo's stores. NULL if any concept is unpriced.
-7. **Time price:** cost ÷ (wage/40). QCEW wage interpolated between quarter midpoints; after the last quarter it's held flat with `wage_is_projected`.
+7. **Time price:** cost ÷ (wage/40). QCEW wage interpolated between quarter midpoints; past the last quarter's midpoint it's held flat with `wage_is_projected` (provisional: exempt from `no_silent_revision`).
 
 ## Before any publication
 - `config/weights_2025.json` must hold real BLS CPI-U relative importances (Dec 2025) for each stratum, with codes checked against the BLS table. Then set `verified: true`.

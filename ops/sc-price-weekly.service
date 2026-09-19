@@ -1,0 +1,9 @@
+[Unit]
+Description=SC Price Observatory weekly collection + regional reconstruction
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/wner/sc-price-observatory/ops/weekly.sh
+TimeoutStartSec=2h

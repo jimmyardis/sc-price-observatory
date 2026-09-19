@@ -9,9 +9,16 @@ Gates (spec §9, plus three the spec implies):
   week_has_observations   the week has any observations at all
   config_verified         weights verified and basket not draft
   no_silent_revision      an already-published value changed under the same method_version
+                          (hours on a projected wage were published as provisional and may move)
+
+Regional reconstruction gates (run_regional):
+  concepts_accounted      every standard-basket concept is priced or excluded with a reason, never both
+  config_verified         basket not draft (the reconstruction uses the same quantities)
+  wages_cover_history     every geo has a wage for every publishable month
+  no_silent_revision      as above, for published regional snapshots
 
 Human-confirmed exceptions live in config/qa_overrides.json ({gate, key}).
-Report: .tmp/qa_report_{week}.json
+Report: .tmp/qa_report_{week}.json, .tmp/qa_report_regional_{month}.json
 """
 from __future__ import annotations
 
@@ -120,6 +127,8 @@ def run(db, cfg: dict, week: date, snapshot: dict, weights_doc: dict, basket_doc
             for h in hs:
                 n = new_hist.get((g, h["week"]))
                 for field in ("basket_cost", "hours_to_basket", "index_value"):
+                    if field == "hours_to_basket" and h.get("wage_is_projected"):
+                        continue  # published as provisional: the next QCEW quarter moves it
                     if n is not None and h.get(field) is not None and n.get(field) != h.get(field):
                         revisions.append({"key": f"{g}|{h['week']}|{field}", "published": h.get(field),
                                           "recomputed": n.get(field), "in_snapshot": old["week"]})
@@ -130,4 +139,57 @@ def run(db, cfg: dict, week: date, snapshot: dict, weights_doc: dict, basket_doc
               "passed": all(g["passed"] for g in gates), "gates": gates}
     TMP.mkdir(parents=True, exist_ok=True)
     (TMP / f"qa_report_{week.isoformat()}.json").write_text(json.dumps(report, indent=1, default=str))
+    return report
+
+
+def run_regional(reg: dict, basket_doc: dict, snapshot: dict, previous_snapshots: list[dict],
+                 overrides: list[dict]) -> dict:
+    ov = {(o["gate"], o["key"]) for o in overrides}
+    gates = []
+
+    basket_concepts = set(basket_doc["weekly_quantity"])
+    priced, excluded = set(reg["concepts"]), set(reg["excluded"])
+    acct = ([{"key": c, "detail": "neither priced nor excluded"} for c in sorted(basket_concepts - priced - excluded)]
+            + [{"key": c, "detail": "both priced and excluded"} for c in sorted(priced & excluded)]
+            + [{"key": c, "detail": "priced but not in the standard basket"} for c in sorted(priced - basket_concepts)])
+    gates.append(_gate("concepts_accounted", acct, ov))
+
+    cfg_fail = []
+    if basket_doc.get("status") == "draft":
+        cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} quantities are draft"})
+    gates.append(_gate("config_verified", cfg_fail, ov))
+
+    publishable = {b["month"] for b in snapshot["basket"] if b["status"] == "published"}
+    holes = []
+    for g in snapshot["geos"]:
+        missing = sorted(s["month"] for s in g["series"] if s["month"] in publishable and s["avg_weekly_wage"] is None)
+        if missing:
+            holes.append({"key": g["geo_id"], "n_months": len(missing), "first": missing[0], "last": missing[-1]})
+    gates.append(_gate("wages_cover_history", holes, ov,
+                       info="pre-2014 quarters come from `python -m execution.fetch_bls wage-history`"))
+
+    revisions = []
+    now_cost = {b["month"]: b["cost"] for b in snapshot["basket"]}
+    now_hours = {(g["geo_id"], s["month"]): s["hours_to_basket"] for g in snapshot["geos"] for s in g["series"]}
+    for old in previous_snapshots:
+        if old.get("method_version") != reg["method_version"]:
+            continue
+        for b in old["basket"]:
+            if b["cost"] is not None and now_cost.get(b["month"]) != b["cost"]:
+                revisions.append({"key": f"basket|{b['month']}", "published": b["cost"],
+                                  "recomputed": now_cost.get(b["month"]), "in_snapshot": old["latest_month"]})
+        for g in old["geos"]:
+            for s in g["series"]:
+                n = now_hours.get((g["geo_id"], s["month"]))
+                if s["hours_to_basket"] is not None and not s["wage_is_projected"] and n != s["hours_to_basket"]:
+                    revisions.append({"key": f"{g['geo_id']}|{s['month']}", "published": s["hours_to_basket"],
+                                      "recomputed": n, "in_snapshot": old["latest_month"]})
+    gates.append(_gate("no_silent_revision", revisions, ov,
+                       info="changing a published number requires a new regional method_version"))
+
+    report = {"kind": "regional_reconstruction", "latest_month": snapshot["latest_month"],
+              "method_version": reg["method_version"],
+              "passed": all(g["passed"] for g in gates), "gates": gates}
+    TMP.mkdir(parents=True, exist_ok=True)
+    (TMP / f"qa_report_regional_{snapshot['latest_month']}.json").write_text(json.dumps(report, indent=1, default=str))
     return report

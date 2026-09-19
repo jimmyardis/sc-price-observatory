@@ -1,0 +1,11 @@
+[Unit]
+Description=SC Price Observatory: Tuesdays 03:00 local
+
+[Timer]
+OnCalendar=Tue *-*-* 03:00:00
+# If WSL was down at 03:00, run as soon as it's back: a skipped week is unrecoverable history.
+Persistent=true
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target

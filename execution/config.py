@@ -61,3 +61,7 @@ def load_env() -> None:
             k, v = line.split("=", 1)
             k = k.removeprefix("export ").strip()
             os.environ.setdefault(k, v.strip().strip('"').strip("'"))
+
+
+def regional() -> dict:
+    return json.loads((CONFIG / "regional_basket.json").read_text())

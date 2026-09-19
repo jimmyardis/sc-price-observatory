@@ -30,12 +30,21 @@ Use these words exactly, in code, names, and conversation.
 - **Coverage rule**: a county needs 3+ stores across 2+ banners. Otherwise it is **thin coverage**, rendered hatched, and **rolled up** to its region (or to the state).
 - **Standard basket**: weekly quantities per concept for the reference household, priced at store brand or unbranded. The **national basket** swaps in national brands.
 - **Tier gap**: the geometric mean of national ÷ store-brand unit price across paired concepts.
-- **Time price** (**hours to basket**): basket cost ÷ (QCEW average weekly wage ÷ 40). Wages after the last published quarter are **projected** (held flat, flagged).
+- **Time price** (**hours to basket**): basket cost ÷ (QCEW average weekly wage ÷ 40). Wages past the midpoint of the last published quarter are **projected** (held flat, flagged): the next quarter will move them, so they are provisional and exempt from the silent-revision gate.
 - **Method version**: labels a computation. Changing a published number requires a new one.
+
+## Regional reconstruction
+
+- **Reference series**: an external published series (BLS average price, CPI, QCEW) stored exactly as published in `reference_values`. Never an observation.
+- **Regional basket**: the standard basket's concepts that BLS prices for the South region, at the same weekly quantities, fixed for the whole history. Every other concept is **excluded** with a stated reason.
+- **Regional reconstruction** ("regional prices, local wages"): regional basket cost from BLS South average prices ÷ each county's QCEW wage, monthly from 2006. An estimate: labeled as one everywhere, published separately, never mixed into measured series.
+- **Regional imputation**: a missing South price moves with the same item's U.S. relative, else the South **basket relative** (geometric mean of the concepts BLS did publish), else it is carried at most 2 months. **Imputed share** is by cost; above 0.25 the month is suppressed.
+- **Overlap**: a week with both measured and regional values. The measured SC cost of the regional basket is shown next to the regional cost for the same concepts.
 
 ## Publishing
 
 - **Snapshot**: an immutable JSON file for one week and method version. The only thing the site reads.
+- **Regional snapshot**: an immutable JSON file (`regional@1`) for one latest month and regional method version, holding the full monthly history.
 - **Draft**: a snapshot written to `.tmp/snapshots/`, never public; QA may fail.
 - **QA gate**: a check that halts publication. **Overrides** are human-confirmed exceptions in `config/qa_overrides.json`.
 - **Silent revision**: an already-published value that changed under the same method version. Always blocked.
@@ -53,4 +62,9 @@ Use these words exactly, in code, names, and conversation.
 | `execution/compute_time_price.py` | fetch_wages (QCEW), wage_at, hours_to_basket |
 | `execution/qa_checks.py` | gates → `.tmp/qa_report_{week}.json` |
 | `execution/export_snapshot.py` | build, publish, manifest |
-| `execution/run_pipeline.py` | the one command |
+| `execution/run_pipeline.py` | the one command (measured) |
+| `execution/fetch_bls.py` | BLSClient, reference series, pre-2014 QCEW wages |
+| `execution/compute_regional.py` | price_concept (gap hierarchy), basket_months, time_prices, overlap |
+| `execution/export_regional.py` | regional snapshot build, publish |
+| `execution/run_regional.py` | the one command (regional) |
+| `ops/weekly.sh` + `ops/sc-price-weekly.{service,timer}` | Tuesday 03:00 run, catches up after downtime, backs up the DB |

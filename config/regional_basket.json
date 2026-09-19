@@ -1,0 +1,179 @@
+{
+ "method_version": "regional-0.1.0",
+ "label": "Regional prices, local wages",
+ "_note": "A reconstruction, not a measurement. Prices are BLS average prices for the South Census region (urban), all brands and outlets; wages are QCEW for each SC county. Quantities come from the standard basket (collection.json basket_file), so the household matches the measured series. Only concepts with a like-for-like BLS series are included; the rest are listed under excluded with the reason.",
+ "area": {
+  "code": "0300",
+  "name": "South Census region (urban)"
+ },
+ "start_month": "2006-01",
+ "imputation": {
+  "area": "0000",
+  "area_name": "U.S. city average",
+  "_note": "A missing South price moves with the same item's U.S. city average month-over-month change (BLS-style cell-relative imputation); if that is missing too, with the geometric-mean change of the concepts BLS did publish for the South that month (the all-strata fallback of ADR 0002). Only in a month with nothing published at all is the last price carried, at most max_carry_months. A concept imputed longer than max_impute_months is unpriced, and so is its month.",
+  "max_impute_months": 36,
+  "max_carry_months": 2
+ },
+ "suppress_imputed_share_above": 0.25,
+ "concepts": {
+  "flour_ap": {
+   "series": "APU0300701111",
+   "bls_item": "Flour, white, all purpose, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "rice_white": {
+   "series": "APU0300701312",
+   "bls_item": "Rice, white, long grain, uncooked, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "spaghetti": {
+   "series": "APU0300701322",
+   "bls_item": "Spaghetti and macaroni, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "bread_white": {
+   "series": "APU0300702111",
+   "bls_item": "Bread, white, pan, per lb",
+   "norm_per_bls_unit": 16,
+   "match": "exact"
+  },
+  "ground_beef": {
+   "series": "APU0300703112",
+   "bls_item": "Ground beef, 100% beef, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "close"
+  },
+  "beef_sirloin": {
+   "series": "APU0300703613",
+   "bls_item": "Steak, sirloin, USDA Choice, boneless, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "bacon": {
+   "series": "APU0300704111",
+   "bls_item": "Bacon, sliced, per lb",
+   "norm_per_bls_unit": 16,
+   "match": "exact"
+  },
+  "pork_chops": {
+   "series": "APU0300704211",
+   "bls_item": "Chops, center cut, bone-in, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "chicken_breast": {
+   "series": "APU0300FF1101",
+   "bls_item": "Chicken breast, boneless, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "chicken_whole": {
+   "series": "APU0300706111",
+   "bls_item": "Chicken, fresh, whole, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "eggs_large": {
+   "series": "APU0300708111",
+   "bls_item": "Eggs, grade A, large, per doz",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "milk_whole": {
+   "series": "APU0300709112",
+   "bls_item": "Milk, fresh, whole, fortified, per gal",
+   "norm_per_bls_unit": 128,
+   "match": "exact"
+  },
+  "cheddar": {
+   "series": "APU0300710212",
+   "bls_item": "Cheddar cheese, natural, per lb",
+   "norm_per_bls_unit": 16,
+   "match": "exact"
+  },
+  "ice_cream": {
+   "series": "APU0300710411",
+   "bls_item": "Ice cream, prepackaged, bulk, regular, per 1/2 gal",
+   "norm_per_bls_unit": 64,
+   "match": "exact"
+  },
+  "bananas": {
+   "series": "APU0300711211",
+   "bls_item": "Bananas, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "oranges": {
+   "series": "APU0300711311",
+   "bls_item": "Oranges, Navel, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "strawberries": {
+   "series": "APU0300711415",
+   "bls_item": "Strawberries, dry pint, per 12 oz",
+   "norm_per_bls_unit": 0.75,
+   "match": "exact"
+  },
+  "potatoes": {
+   "series": "APU0300712112",
+   "bls_item": "Potatoes, white, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "tomatoes": {
+   "series": "APU0300712311",
+   "bls_item": "Tomatoes, field grown, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "close"
+  },
+  "pinto_beans_dry": {
+   "series": "APU0300714233",
+   "bls_item": "Beans, dried, any type, all sizes, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "close"
+  },
+  "sugar": {
+   "series": "APU0300715211",
+   "bls_item": "Sugar, white, all sizes, per lb",
+   "norm_per_bls_unit": 1,
+   "match": "exact"
+  },
+  "potato_chips": {
+   "series": "APU0300718311",
+   "bls_item": "Potato chips, per 16 oz",
+   "norm_per_bls_unit": 16,
+   "match": "exact"
+  }
+ },
+ "excluded": {
+  "cereal_oats": "no BLS average price series",
+  "hot_dogs": "BLS frankfurter series (705111) no longer published for the South",
+  "lunchmeat_turkey": "no BLS average price series",
+  "ground_turkey": "no BLS average price series",
+  "tuna_canned": "BLS tuna series (707111) not published for the South",
+  "apples": "BLS apple series is Red Delicious (711111) and no longer published for the South",
+  "lettuce": "BLS iceberg lettuce series (712211) no longer published for the South",
+  "onions": "no BLS average price series for the South",
+  "carrots": "no BLS average price series for the South",
+  "green_beans_canned": "no BLS average price series",
+  "broccoli_frozen": "no BLS average price series",
+  "orange_juice": "BLS series (713111) is frozen concentrate, not the refrigerated juice we price",
+  "butter": "BLS butter series (FS1101) not published for the South",
+  "mayonnaise": "no BLS average price series",
+  "peanut_butter": "BLS peanut butter series (716141) not published for the South",
+  "vegetable_oil": "no BLS average price series",
+  "soup_chicken_noodle": "no BLS average price series",
+  "ketchup": "no BLS average price series",
+  "yogurt": "the South yogurt series (FJ4101) begins 2018-04; including it would cut the history to 2018",
+  "cola_2l": "the South 2-liter soft drink series (FN1101) begins 2018-04; including it would cut the history to 2018",
+  "coffee_ground": "the South coffee series (717311) is published only 2021-05 to 2025-09"
+ },
+ "comparison_series": {
+  "CUUR0300SAF11": "CPI-U, food at home, South (1982-84=100, not seasonally adjusted)",
+  "CUUR0000SAF11": "CPI-U, food at home, U.S. city average (1982-84=100, not seasonally adjusted)"
+ }
+}

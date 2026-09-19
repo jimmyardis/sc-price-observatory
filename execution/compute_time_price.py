@@ -5,8 +5,9 @@
 Wages: BLS QCEW county average weekly wage, all industries, all ownerships
 (own_code 0, industry 10). Quarterly, ~5-6 month lag. Regions are
 employment-weighted from their counties. Weekly wages are linearly
-interpolated between quarter midpoints; after the last published quarter the
-last value is held and flagged wage_is_projected.
+interpolated between quarter midpoints; past the midpoint of the last published
+quarter the last value is held and flagged wage_is_projected, because the next
+quarter will move it.
 
     python -m execution.compute_time_price fetch-wages [--since 2025Q1]
     python -m execution.compute_time_price compute
@@ -56,6 +57,11 @@ def parse_qcew(text: str, geo_parent: dict[str, str | None]) -> dict[str, dict]:
         emp = sum(float(r[f"month{i}_emplvl"] or 0) for i in (1, 2, 3)) / 3
         out[geo_id] = {"avg_weekly_wage": wage, "total_qtrly_wages": float(r["total_qtrly_wages"] or 0),
                        "avg_employment": emp, "source": "QCEW"}
+    return derive_regions(out, geo_parent)
+
+
+def derive_regions(out: dict[str, dict], geo_parent: dict[str, str | None]) -> dict[str, dict]:
+    """Add region rows, employment-weighted from their counties: total wages / employment / 13 weeks."""
     regions: dict[str, list[dict]] = defaultdict(list)
     for geo_id, row in list(out.items()):
         parent = geo_parent.get(geo_id)
@@ -74,8 +80,9 @@ def wage_at(week: date, series: list[tuple[date, float]]) -> tuple[float | None,
     if not series:
         return None, False
     pts = sorted((quarter_mid(q), w) for q, w in series)
-    last_q = max(q for q, _ in series)
-    projected = week > quarter_end(last_q)
+    # Past the last quarter's midpoint the wage is held flat, and the next published
+    # quarter will move it: provisional, so flagged (and exempt from no_silent_revision).
+    projected = week > pts[-1][0]
     if week <= pts[0][0]:
         return pts[0][1], projected
     if week >= pts[-1][0]:

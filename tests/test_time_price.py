@@ -36,9 +36,17 @@ def test_wage_interpolates_between_quarter_midpoints():
 
 
 def test_wage_held_forward_and_flagged_projected():
+    series = [(date(2025, 10, 1), 1000.0), (date(2026, 1, 1), 1100.0)]
+    assert wage_at(date(2026, 1, 20), series)[1] is False            # interpolated between two quarters
+    assert wage_at(date(2026, 9, 14), series) == (1100.0, True)     # past the last quarter: projected
+
+
+def test_wage_past_last_midpoint_is_projected_because_the_next_quarter_will_move_it():
     series = [(date(2026, 1, 1), 1100.0)]
-    assert wage_at(date(2026, 3, 30), series) == (1100.0, False)   # inside the published quarter
-    assert wage_at(date(2026, 9, 14), series) == (1100.0, True)    # past it: projected
+    before, _ = wage_at(date(2026, 3, 30), series)
+    assert wage_at(date(2026, 3, 30), series) == (1100.0, True)
+    after, _ = wage_at(date(2026, 3, 30), series + [(date(2026, 4, 1), 1200.0)])
+    assert after != before
 
 
 def test_hours_to_basket():
