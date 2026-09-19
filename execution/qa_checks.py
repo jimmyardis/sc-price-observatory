@@ -14,7 +14,8 @@ Gates (spec §9, plus three the spec implies):
 Regional reconstruction gates (run_regional):
   concepts_accounted      every standard-basket concept is priced or excluded with a reason, never both
   config_verified         basket final (the reconstruction uses the same quantities)
-  wages_cover_history     every geo has a wage for every publishable month
+  wages_cover_history     no geo is missing a wage for a month other geos have (months before any
+                          published QCEW quarter are uniformly no_data and fill in later)
   no_silent_revision      as above, for published regional snapshots
 
 Human-confirmed exceptions live in config/qa_overrides.json ({gate, key}).
@@ -159,14 +160,20 @@ def run_regional(reg: dict, basket_doc: dict, snapshot: dict, previous_snapshots
         cfg_fail.append({"key": "basket", "detail": f"{basket_doc.get('basket_version')} is {basket_doc.get('status')}, not final"})
     gates.append(_gate("config_verified", cfg_fail, ov))
 
+    # A month before any QCEW quarter we hold has no wage for anyone: it is uniformly no_data and
+    # fills in later without moving a published value. A month where only SOME geos have a wage is
+    # a hole, and that is what this gate catches.
     publishable = {b["month"] for b in snapshot["basket"] if b["status"] == "published"}
+    have_any = {s["month"] for g in snapshot["geos"] for s in g["series"] if s["avg_weekly_wage"] is not None}
     holes = []
     for g in snapshot["geos"]:
-        missing = sorted(s["month"] for s in g["series"] if s["month"] in publishable and s["avg_weekly_wage"] is None)
+        missing = sorted(s["month"] for s in g["series"]
+                         if s["month"] in publishable and s["month"] in have_any and s["avg_weekly_wage"] is None)
         if missing:
             holes.append({"key": g["geo_id"], "n_months": len(missing), "first": missing[0], "last": missing[-1]})
     gates.append(_gate("wages_cover_history", holes, ov,
-                       info="pre-2014 quarters come from `python -m execution.fetch_bls wage-history`"))
+                       info="a geo is missing a wage for a month other geos have; pre-2014 quarters come from "
+                            "`python -m execution.fetch_bls wage-history`"))
 
     revisions = []
     now_cost = {b["month"]: b["cost"] for b in snapshot["basket"]}

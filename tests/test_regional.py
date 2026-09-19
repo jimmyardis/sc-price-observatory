@@ -190,9 +190,23 @@ def test_regional_publishes_a_separate_labeled_snapshot(db, tmp_dirs):
     assert {f["kind"] for f in files} == {"regional_reconstruction"} and len(files) == 3
 
 
+def test_months_before_any_wage_are_no_data_but_a_one_county_hole_blocks(db, tmp_dirs):
+    seed(db)
+    reg = {**REG, "start_month": "2023-10"}           # a quarter earlier than any wage we hold
+    assert regional_run(db, reg=reg)["published"]     # uniformly wage-less months are fine
+    snap = json.loads((tmp_dirs[1] / "regional_latest.json").read_text())
+    early = [s for s in next(g for g in snap["geos"] if g["geo_id"] == "45")["series"] if s["month"] < "2024-01"]
+    assert early and all(s["status"] == "no_data" and s["hours_to_basket"] is None for s in early)
+
+    db.execute("DELETE FROM wages WHERE geo_id = '45079'")   # one county with no wage at all
+    db.commit()
+    result = regional_run(db, reg=reg)
+    assert not result["published"] and "wages_cover_history" in result["qa"]["failed_gates"]
+
+
 def test_regional_draft_basket_blocks_publication(db, tmp_dirs):
     seed(db)
-    result = regional_run(db, basket=config.basket(config.collection()))
+    result = regional_run(db, basket={**config.basket(config.collection()), "status": "proposed"})
     assert not result["published"] and "config_verified" in result["qa"]["failed_gates"]
 
 

@@ -1,0 +1,2086 @@
+{
+ "schema": "sc-price-observatory/snapshot@1",
+ "week": "2026-09-14",
+ "method_version": "0.1.0",
+ "generated_at": "2026-09-19T22:37:26.279691+00:00",
+ "config": {
+  "weights_version": "2025-12",
+  "weights_verified": true,
+  "basket_version": "tfp2021-v1",
+  "basket_status": "final",
+  "household": "USDA reference family of four (man and woman 20-50, children 6-8 and 9-11)",
+  "banners_collected": [
+   "kroger",
+   "harris_teeter"
+  ],
+  "headline_series": "shelf prices only (promotions excluded)",
+  "suppress_imputed_share_above": 0.25,
+  "coverage_rule": {
+   "min_stores": 3,
+   "min_banners": 2
+  }
+ },
+ "headline": {
+  "geo_id": "45",
+  "status": "published",
+  "hours_to_basket": 5.66,
+  "basket_cost": 183.3,
+  "avg_weekly_wage": 1296.0,
+  "wage_is_projected": true,
+  "change": {
+   "wow": {
+    "basket_cost_pct": null,
+    "hours_pct": null
+   },
+   "yoy": {
+    "basket_cost_pct": null,
+    "hours_pct": null
+   }
+  },
+  "sentence": "5.7 hours of average local work buys a week of groceries for a family of four."
+ },
+ "geos": [
+  {
+   "geo_id": "45",
+   "geo_type": "state",
+   "name": "South Carolina",
+   "parent_geo_id": null,
+   "status": "published",
+   "reasons": [],
+   "rolled_up_to": null,
+   "levels": {
+    "basket_cost": 183.3,
+    "basket_cost_national": 213.16,
+    "basket_cost_promo_incl": 178.83,
+    "avg_weekly_wage": 1296.0,
+    "wage_is_projected": true,
+    "hours_to_basket": 5.66,
+    "change": {
+     "wow": {
+      "basket_cost_pct": null,
+      "hours_pct": null
+     },
+     "yoy": {
+      "basket_cost_pct": null,
+      "hours_pct": null
+     }
+    }
+   },
+   "index": null,
+   "tier_gap": {
+    "national_over_store": 1.5727,
+    "n_concepts": 17,
+    "of_paired_concepts": 17
+   },
+   "coverage": {
+    "n_stores": 3,
+    "n_banners": 1,
+    "n_obs": 180,
+    "imputed_share": 0.0,
+    "coverage_ok": false,
+    "stores_by_banner": {
+     "kroger": 3
+    }
+   }
+  },
+  {
+   "geo_id": "region:upstate",
+   "geo_type": "region",
+   "name": "Upstate",
+   "parent_geo_id": "45",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "region:midlands",
+   "geo_type": "region",
+   "name": "Midlands",
+   "parent_geo_id": "45",
+   "status": "published",
+   "reasons": [],
+   "rolled_up_to": null,
+   "levels": {
+    "basket_cost": 183.3,
+    "basket_cost_national": 213.16,
+    "basket_cost_promo_incl": 178.83,
+    "avg_weekly_wage": 1249.69,
+    "wage_is_projected": true,
+    "hours_to_basket": 5.87,
+    "change": {
+     "wow": {
+      "basket_cost_pct": null,
+      "hours_pct": null
+     },
+     "yoy": {
+      "basket_cost_pct": null,
+      "hours_pct": null
+     }
+    }
+   },
+   "index": null,
+   "tier_gap": {
+    "national_over_store": 1.5727,
+    "n_concepts": 17,
+    "of_paired_concepts": 17
+   },
+   "coverage": {
+    "n_stores": 3,
+    "n_banners": 1,
+    "n_obs": 180,
+    "imputed_share": 0.0,
+    "coverage_ok": false,
+    "stores_by_banner": {
+     "kroger": 3
+    }
+   }
+  },
+  {
+   "geo_id": "region:pee_dee",
+   "geo_type": "region",
+   "name": "Pee Dee",
+   "parent_geo_id": "45",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "region:lowcountry",
+   "geo_type": "region",
+   "name": "Lowcountry",
+   "parent_geo_id": "45",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45001",
+   "geo_type": "county",
+   "name": "Abbeville County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45003",
+   "geo_type": "county",
+   "name": "Aiken County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45005",
+   "geo_type": "county",
+   "name": "Allendale County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45007",
+   "geo_type": "county",
+   "name": "Anderson County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45009",
+   "geo_type": "county",
+   "name": "Bamberg County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45011",
+   "geo_type": "county",
+   "name": "Barnwell County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45013",
+   "geo_type": "county",
+   "name": "Beaufort County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45015",
+   "geo_type": "county",
+   "name": "Berkeley County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45017",
+   "geo_type": "county",
+   "name": "Calhoun County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45019",
+   "geo_type": "county",
+   "name": "Charleston County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45021",
+   "geo_type": "county",
+   "name": "Cherokee County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45023",
+   "geo_type": "county",
+   "name": "Chester County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45025",
+   "geo_type": "county",
+   "name": "Chesterfield County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45027",
+   "geo_type": "county",
+   "name": "Clarendon County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45029",
+   "geo_type": "county",
+   "name": "Colleton County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45031",
+   "geo_type": "county",
+   "name": "Darlington County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45033",
+   "geo_type": "county",
+   "name": "Dillon County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45035",
+   "geo_type": "county",
+   "name": "Dorchester County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45037",
+   "geo_type": "county",
+   "name": "Edgefield County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45039",
+   "geo_type": "county",
+   "name": "Fairfield County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45041",
+   "geo_type": "county",
+   "name": "Florence County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45043",
+   "geo_type": "county",
+   "name": "Georgetown County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45045",
+   "geo_type": "county",
+   "name": "Greenville County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45047",
+   "geo_type": "county",
+   "name": "Greenwood County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45049",
+   "geo_type": "county",
+   "name": "Hampton County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45051",
+   "geo_type": "county",
+   "name": "Horry County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45053",
+   "geo_type": "county",
+   "name": "Jasper County",
+   "parent_geo_id": "region:lowcountry",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45055",
+   "geo_type": "county",
+   "name": "Kershaw County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45057",
+   "geo_type": "county",
+   "name": "Lancaster County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45059",
+   "geo_type": "county",
+   "name": "Laurens County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45061",
+   "geo_type": "county",
+   "name": "Lee County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45063",
+   "geo_type": "county",
+   "name": "Lexington County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45065",
+   "geo_type": "county",
+   "name": "McCormick County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45067",
+   "geo_type": "county",
+   "name": "Marion County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45069",
+   "geo_type": "county",
+   "name": "Marlboro County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45071",
+   "geo_type": "county",
+   "name": "Newberry County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45073",
+   "geo_type": "county",
+   "name": "Oconee County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45075",
+   "geo_type": "county",
+   "name": "Orangeburg County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45077",
+   "geo_type": "county",
+   "name": "Pickens County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45079",
+   "geo_type": "county",
+   "name": "Richland County",
+   "parent_geo_id": "region:midlands",
+   "status": "thin_coverage",
+   "reasons": [
+    "3 stores / 1 banners; rule is 3+ stores across 2+ banners"
+   ],
+   "rolled_up_to": "region:midlands",
+   "levels": null,
+   "index": null,
+   "tier_gap": {
+    "national_over_store": 1.5727,
+    "n_concepts": 17,
+    "of_paired_concepts": 17
+   },
+   "coverage": {
+    "n_stores": 3,
+    "n_banners": 1,
+    "n_obs": 180,
+    "imputed_share": 0.0,
+    "coverage_ok": false,
+    "stores_by_banner": {
+     "kroger": 3
+    }
+   }
+  },
+  {
+   "geo_id": "45081",
+   "geo_type": "county",
+   "name": "Saluda County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45083",
+   "geo_type": "county",
+   "name": "Spartanburg County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45085",
+   "geo_type": "county",
+   "name": "Sumter County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45087",
+   "geo_type": "county",
+   "name": "Union County",
+   "parent_geo_id": "region:upstate",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45089",
+   "geo_type": "county",
+   "name": "Williamsburg County",
+   "parent_geo_id": "region:pee_dee",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  },
+  {
+   "geo_id": "45091",
+   "geo_type": "county",
+   "name": "York County",
+   "parent_geo_id": "region:midlands",
+   "status": "no_data",
+   "reasons": [
+    "no observations this week"
+   ],
+   "rolled_up_to": null,
+   "levels": null,
+   "index": null,
+   "tier_gap": null,
+   "coverage": {
+    "n_stores": 0,
+    "n_banners": 0,
+    "n_obs": 0,
+    "imputed_share": null,
+    "coverage_ok": false,
+    "stores_by_banner": {}
+   }
+  }
+ ],
+ "history": {
+  "45": [
+   {
+    "week": "2026-09-14",
+    "basket_cost": 183.3,
+    "hours_to_basket": 5.66,
+    "wage_is_projected": true,
+    "index_value": null,
+    "imputed_share": 0.0
+   }
+  ],
+  "region:midlands": [
+   {
+    "week": "2026-09-14",
+    "basket_cost": 183.3,
+    "hours_to_basket": 5.87,
+    "wage_is_projected": true,
+    "index_value": null,
+    "imputed_share": 0.0
+   }
+  ]
+ },
+ "basket": [
+  {
+   "item_id": "flour_ap_store",
+   "concept": "flour_ap",
+   "label": "All-purpose flour",
+   "tier": "store_brand",
+   "norm_unit": "lb",
+   "stratum": "FA01",
+   "stratum_label": "Flour and prepared flour mixes",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.038,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 1.413
+  },
+  {
+   "item_id": "cereal_oats_store",
+   "concept": "cereal_oats",
+   "label": "Toasted oat cereal",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FA02",
+   "stratum_label": "Breakfast cereal",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.136,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 17.92
+  },
+  {
+   "item_id": "cereal_oats_national",
+   "concept": "cereal_oats",
+   "label": "Toasted oat cereal (Cheerios)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FA02",
+   "stratum_label": "Breakfast cereal",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.136,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 17.92
+  },
+  {
+   "item_id": "rice_white_store",
+   "concept": "rice_white",
+   "label": "Long grain white rice",
+   "tier": "store_brand",
+   "norm_unit": "lb",
+   "stratum": "FA03",
+   "stratum_label": "Rice, pasta, cornmeal",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.141,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 3.646
+  },
+  {
+   "item_id": "spaghetti_store",
+   "concept": "spaghetti",
+   "label": "Spaghetti pasta",
+   "tier": "store_brand",
+   "norm_unit": "lb",
+   "stratum": "FA03",
+   "stratum_label": "Rice, pasta, cornmeal",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.141,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 3.646
+  },
+  {
+   "item_id": "spaghetti_national",
+   "concept": "spaghetti",
+   "label": "Spaghetti pasta (Barilla)",
+   "tier": "national_brand",
+   "norm_unit": "lb",
+   "stratum": "FA03",
+   "stratum_label": "Rice, pasta, cornmeal",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.141,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 3.646
+  },
+  {
+   "item_id": "bread_white_store",
+   "concept": "bread_white",
+   "label": "White sandwich bread",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FB01",
+   "stratum_label": "Bread",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.175,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 58.333
+  },
+  {
+   "item_id": "bread_white_national",
+   "concept": "bread_white",
+   "label": "White sandwich bread (Sunbeam/Nature's Own)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FB01",
+   "stratum_label": "Bread",
+   "group": "cereals_bakery",
+   "stratum_relative_importance": 0.175,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 58.333
+  },
+  {
+   "item_id": "ground_beef_8020",
+   "concept": "ground_beef",
+   "label": "Ground beef 80/20",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FC01",
+   "stratum_label": "Uncooked ground beef",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.236,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 0.405
+  },
+  {
+   "item_id": "beef_sirloin_steak",
+   "concept": "beef_sirloin",
+   "label": "Top sirloin steak",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FC03",
+   "stratum_label": "Uncooked beef steaks",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.24,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 0.405
+  },
+  {
+   "item_id": "bacon_store",
+   "concept": "bacon",
+   "label": "Bacon, sliced",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FD01",
+   "stratum_label": "Bacon, breakfast sausage, and related products",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.131,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 8.36
+  },
+  {
+   "item_id": "bacon_national",
+   "concept": "bacon",
+   "label": "Bacon, sliced (Smithfield)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FD01",
+   "stratum_label": "Bacon, breakfast sausage, and related products",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.131,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 8.36
+  },
+  {
+   "item_id": "pork_chops_bone_in",
+   "concept": "pork_chops",
+   "label": "Bone-in pork chops",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FD03",
+   "stratum_label": "Pork chops",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.046,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 0.523
+  },
+  {
+   "item_id": "hot_dogs_store",
+   "concept": "hot_dogs",
+   "label": "Beef franks",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FE",
+   "stratum_label": "Other meats",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.207,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 6.48
+  },
+  {
+   "item_id": "hot_dogs_national",
+   "concept": "hot_dogs",
+   "label": "Beef franks (Ball Park)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FE",
+   "stratum_label": "Other meats",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.207,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 6.48
+  },
+  {
+   "item_id": "lunchmeat_turkey_store",
+   "concept": "lunchmeat_turkey",
+   "label": "Sliced turkey lunchmeat",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FE",
+   "stratum_label": "Other meats",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.207,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 8.297
+  },
+  {
+   "item_id": "chicken_breast_boneless",
+   "concept": "chicken_breast",
+   "label": "Boneless skinless chicken breast",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FF01",
+   "stratum_label": "Chicken",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.291,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 2.926
+  },
+  {
+   "item_id": "chicken_whole",
+   "concept": "chicken_whole",
+   "label": "Whole fryer chicken",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FF01",
+   "stratum_label": "Chicken",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.291,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 2.926
+  },
+  {
+   "item_id": "ground_turkey",
+   "concept": "ground_turkey",
+   "label": "Ground turkey",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FF02",
+   "stratum_label": "Other uncooked poultry including turkey",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.072,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 0.519
+  },
+  {
+   "item_id": "tuna_canned_store",
+   "concept": "tuna_canned",
+   "label": "Chunk light tuna in water",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FG02",
+   "stratum_label": "Processed fish and seafood",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.149,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 47.04
+  },
+  {
+   "item_id": "tuna_canned_national",
+   "concept": "tuna_canned",
+   "label": "Chunk light tuna in water (StarKist)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FG02",
+   "stratum_label": "Processed fish and seafood",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.149,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 47.04
+  },
+  {
+   "item_id": "eggs_large_dozen",
+   "concept": "eggs_large",
+   "label": "Large grade A eggs",
+   "tier": "store_brand",
+   "norm_unit": "dozen",
+   "stratum": "FH",
+   "stratum_label": "Eggs",
+   "group": "meats_poultry_fish_eggs",
+   "stratum_relative_importance": 0.133,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 1.371
+  },
+  {
+   "item_id": "milk_whole_store",
+   "concept": "milk_whole",
+   "label": "Whole milk, gallon",
+   "tier": "store_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FJ01",
+   "stratum_label": "Milk",
+   "group": "dairy",
+   "stratum_relative_importance": 0.19,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 563.024
+  },
+  {
+   "item_id": "cheddar_block_store",
+   "concept": "cheddar",
+   "label": "Cheddar cheese block",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ02",
+   "stratum_label": "Cheese and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.261,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 11.2
+  },
+  {
+   "item_id": "cheddar_block_national",
+   "concept": "cheddar",
+   "label": "Cheddar cheese block (Kraft/Tillamook)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ02",
+   "stratum_label": "Cheese and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.261,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 11.2
+  },
+  {
+   "item_id": "ice_cream_store",
+   "concept": "ice_cream",
+   "label": "Vanilla ice cream",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ03",
+   "stratum_label": "Ice cream and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.115,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 7.837
+  },
+  {
+   "item_id": "ice_cream_national",
+   "concept": "ice_cream",
+   "label": "Vanilla ice cream (Tillamook)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ03",
+   "stratum_label": "Ice cream and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.115,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 7.837
+  },
+  {
+   "item_id": "yogurt_store",
+   "concept": "yogurt",
+   "label": "Plain yogurt, quart",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ04",
+   "stratum_label": "Other dairy and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.192,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 62.512
+  },
+  {
+   "item_id": "yogurt_national",
+   "concept": "yogurt",
+   "label": "Plain yogurt, quart (Dannon)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FJ04",
+   "stratum_label": "Other dairy and related products",
+   "group": "dairy",
+   "stratum_relative_importance": 0.192,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 62.512
+  },
+  {
+   "item_id": "apples_gala",
+   "concept": "apples",
+   "label": "Gala apples",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FK01",
+   "stratum_label": "Apples",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.073,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 4.759
+  },
+  {
+   "item_id": "bananas",
+   "concept": "bananas",
+   "label": "Bananas",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FK02",
+   "stratum_label": "Bananas",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.06,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 8.419
+  },
+  {
+   "item_id": "oranges_navel",
+   "concept": "oranges",
+   "label": "Navel oranges",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FK03",
+   "stratum_label": "Citrus fruits",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.077,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 2.477
+  },
+  {
+   "item_id": "strawberries_1lb",
+   "concept": "strawberries",
+   "label": "Strawberries, 1 lb",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FK04",
+   "stratum_label": "Other fresh fruits",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.322,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 2.105
+  },
+  {
+   "item_id": "potatoes_russet",
+   "concept": "potatoes",
+   "label": "Russet potatoes, bag",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FL01",
+   "stratum_label": "Potatoes",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.063,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 10.64
+  },
+  {
+   "item_id": "lettuce_iceberg",
+   "concept": "lettuce",
+   "label": "Iceberg lettuce, head",
+   "tier": "unbranded",
+   "norm_unit": "count",
+   "stratum": "FL02",
+   "stratum_label": "Lettuce",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.044,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 1.927
+  },
+  {
+   "item_id": "tomatoes_roma",
+   "concept": "tomatoes",
+   "label": "Roma tomatoes",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FL03",
+   "stratum_label": "Tomatoes",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.063,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 5.51
+  },
+  {
+   "item_id": "onions_yellow",
+   "concept": "onions",
+   "label": "Yellow onions",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FL04",
+   "stratum_label": "Other fresh vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.305,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 4.291
+  },
+  {
+   "item_id": "carrots_1lb",
+   "concept": "carrots",
+   "label": "Carrots, 1 lb bag",
+   "tier": "unbranded",
+   "norm_unit": "lb",
+   "stratum": "FL04",
+   "stratum_label": "Other fresh vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.305,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 2.77
+  },
+  {
+   "item_id": "green_beans_canned_store",
+   "concept": "green_beans_canned",
+   "label": "Cut green beans, canned",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FM01",
+   "stratum_label": "Canned fruits and vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.096,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 9.285
+  },
+  {
+   "item_id": "green_beans_canned_national",
+   "concept": "green_beans_canned",
+   "label": "Cut green beans, canned (Del Monte)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FM01",
+   "stratum_label": "Canned fruits and vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.096,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 9.285
+  },
+  {
+   "item_id": "broccoli_frozen_store",
+   "concept": "broccoli_frozen",
+   "label": "Frozen broccoli florets",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FM02",
+   "stratum_label": "Frozen fruits and vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.084,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 51.68
+  },
+  {
+   "item_id": "broccoli_frozen_national",
+   "concept": "broccoli_frozen",
+   "label": "Frozen broccoli florets (Birds Eye)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FM02",
+   "stratum_label": "Frozen fruits and vegetables",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.084,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 51.68
+  },
+  {
+   "item_id": "pinto_beans_dry",
+   "concept": "pinto_beans_dry",
+   "label": "Dry pinto beans",
+   "tier": "store_brand",
+   "norm_unit": "lb",
+   "stratum": "FM03",
+   "stratum_label": "Other processed fruits and vegetables including dried",
+   "group": "fruits_vegetables",
+   "stratum_relative_importance": 0.082,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 1.59
+  },
+  {
+   "item_id": "cola_2l_store",
+   "concept": "cola_2l",
+   "label": "Cola, 2 liter",
+   "tier": "store_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FN01",
+   "stratum_label": "Carbonated drinks",
+   "group": "beverages",
+   "stratum_relative_importance": 0.324,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 4.372
+  },
+  {
+   "item_id": "cola_2l_national",
+   "concept": "cola_2l",
+   "label": "Cola, 2 liter (Coca-Cola)",
+   "tier": "national_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FN01",
+   "stratum_label": "Carbonated drinks",
+   "group": "beverages",
+   "stratum_relative_importance": 0.324,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 4.372
+  },
+  {
+   "item_id": "orange_juice_store",
+   "concept": "orange_juice",
+   "label": "Orange juice, not from concentrate",
+   "tier": "store_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FN03",
+   "stratum_label": "Nonfrozen noncarbonated juices and drinks",
+   "group": "beverages",
+   "stratum_relative_importance": 0.346,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 140.361
+  },
+  {
+   "item_id": "orange_juice_national",
+   "concept": "orange_juice",
+   "label": "Orange juice (Tropicana)",
+   "tier": "national_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FN03",
+   "stratum_label": "Nonfrozen noncarbonated juices and drinks",
+   "group": "beverages",
+   "stratum_relative_importance": 0.346,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 140.361
+  },
+  {
+   "item_id": "coffee_ground_store",
+   "concept": "coffee_ground",
+   "label": "Ground coffee, medium roast",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FP01",
+   "stratum_label": "Coffee",
+   "group": "beverages",
+   "stratum_relative_importance": 0.221,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 6.426
+  },
+  {
+   "item_id": "coffee_ground_national",
+   "concept": "coffee_ground",
+   "label": "Ground coffee (Folgers Classic Roast)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FP01",
+   "stratum_label": "Coffee",
+   "group": "beverages",
+   "stratum_relative_importance": 0.221,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 6.426
+  },
+  {
+   "item_id": "sugar_granulated",
+   "concept": "sugar",
+   "label": "Granulated sugar",
+   "tier": "store_brand",
+   "norm_unit": "lb",
+   "stratum": "FR01",
+   "stratum_label": "Sugar and sugar substitutes",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.032,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 0.82
+  },
+  {
+   "item_id": "butter_store",
+   "concept": "butter",
+   "label": "Salted butter, 1 lb",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FS01",
+   "stratum_label": "Butter and margarine",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.066,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 9.12
+  },
+  {
+   "item_id": "butter_national",
+   "concept": "butter",
+   "label": "Salted butter (Land O Lakes)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FS01",
+   "stratum_label": "Butter and margarine",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.066,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 9.12
+  },
+  {
+   "item_id": "mayonnaise_dukes",
+   "concept": "mayonnaise",
+   "label": "Mayonnaise (Duke's)",
+   "tier": "national_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FS02",
+   "stratum_label": "Salad dressing",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.055,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 9.371
+  },
+  {
+   "item_id": "peanut_butter_store",
+   "concept": "peanut_butter",
+   "label": "Creamy peanut butter",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FS03",
+   "stratum_label": "Other fats and oils including peanut butter",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.11,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 31.52
+  },
+  {
+   "item_id": "peanut_butter_national",
+   "concept": "peanut_butter",
+   "label": "Creamy peanut butter (Jif)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FS03",
+   "stratum_label": "Other fats and oils including peanut butter",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.11,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 31.52
+  },
+  {
+   "item_id": "vegetable_oil_store",
+   "concept": "vegetable_oil",
+   "label": "Vegetable oil",
+   "tier": "store_brand",
+   "norm_unit": "fl_oz",
+   "stratum": "FS03",
+   "stratum_label": "Other fats and oils including peanut butter",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.11,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 9.508
+  },
+  {
+   "item_id": "soup_chicken_noodle_store",
+   "concept": "soup_chicken_noodle",
+   "label": "Condensed chicken noodle soup",
+   "tier": "store_brand",
+   "norm_unit": "oz",
+   "stratum": "FT01",
+   "stratum_label": "Soups",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.085,
+   "in_standard_basket": true,
+   "in_national_basket": false,
+   "weekly_quantity": 24.16
+  },
+  {
+   "item_id": "soup_chicken_noodle_national",
+   "concept": "soup_chicken_noodle",
+   "label": "Condensed chicken noodle soup (Campbell's)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FT01",
+   "stratum_label": "Soups",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.085,
+   "in_standard_basket": false,
+   "in_national_basket": true,
+   "weekly_quantity": 24.16
+  },
+  {
+   "item_id": "potato_chips_lays",
+   "concept": "potato_chips",
+   "label": "Potato chips (Lay's Classic)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FT03",
+   "stratum_label": "Snacks",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.372,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 10.56
+  },
+  {
+   "item_id": "ketchup_heinz",
+   "concept": "ketchup",
+   "label": "Tomato ketchup (Heinz)",
+   "tier": "national_brand",
+   "norm_unit": "oz",
+   "stratum": "FT04",
+   "stratum_label": "Spices, seasonings, condiments, sauces",
+   "group": "other_food_home",
+   "stratum_relative_importance": 0.317,
+   "in_standard_basket": true,
+   "in_national_basket": true,
+   "weekly_quantity": 13.12
+  }
+ ],
+ "notes": [
+  "The index series begins once 12 weeks of baseline exist. Basket cost and time price are meaningful from week one."
+ ],
+ "qa": {
+  "passed": true,
+  "failed_gates": []
+ },
+ "draft": false
+}

@@ -91,10 +91,11 @@ def test_full_run_publishes_levels_index_and_headline(db, tmp_dirs):
     assert {f["path"] for f in manifest["files"]} == {f"0.1.0/{LAST}.json", f"0.1.0/{LAST}_levels.csv"}
 
 
-def test_draft_configs_block_publication(db, tmp_dirs):
+def test_unverified_configs_block_publication(db, tmp_dirs):
     _, snaps = tmp_dirs
     cfg = config.collection()
-    weights, basket = config.weights(cfg), config.basket(cfg)   # the real, still-draft files
+    weights = {**config.weights(cfg), "verified": False}          # weights not checked against BLS
+    basket = {**config.basket(cfg), "status": "proposed"}         # basket not signed off
     seed(db, weeks=3)
     compute(db, cfg, weights, basket)
     week = START + timedelta(weeks=2)

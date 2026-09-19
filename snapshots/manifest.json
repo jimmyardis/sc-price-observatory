@@ -1,0 +1,47 @@
+{
+ "files": [
+  {
+   "path": "0.1.0/2026-09-14.json",
+   "sha256": "bc179d775b4bcf1fa8e81c2b2e0eb8ac1129f92cb3c761b72018818b9f4620f3",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 1,
+   "published_at": "2026-09-19T22:37:26.279691+00:00"
+  },
+  {
+   "path": "0.1.0/2026-09-14_levels.csv",
+   "sha256": "058dd2daa41c3c3df100a106a8d6d559512a9f185736d49873e709389f98320b",
+   "week": "2026-09-14",
+   "method_version": "0.1.0",
+   "revision": 1,
+   "published_at": "2026-09-19T22:37:26.279691+00:00"
+  },
+  {
+   "path": "regional/regional-0.1.0/2026-08.json",
+   "sha256": "c094924a013be1f2c3d64ae46e65bc2898326024d2806ce114327ccfea0e7c3d",
+   "kind": "regional_reconstruction",
+   "month": "2026-08",
+   "method_version": "regional-0.1.0",
+   "revision": 1,
+   "published_at": "2026-09-19T22:39:13.600459+00:00"
+  },
+  {
+   "path": "regional/regional-0.1.0/2026-08_hours.csv",
+   "sha256": "c679d1c12a41d00bd919df7b8090b7b2684661e4519b16c1a48dc193f3621da0",
+   "kind": "regional_reconstruction",
+   "month": "2026-08",
+   "method_version": "regional-0.1.0",
+   "revision": 1,
+   "published_at": "2026-09-19T22:39:13.600459+00:00"
+  },
+  {
+   "path": "regional/regional-0.1.0/2026-08_concepts.csv",
+   "sha256": "03ddcef74a0d430b11bb48b1cb63b2fc1d1d2fdc3583f01fe451eab308febbf0",
+   "kind": "regional_reconstruction",
+   "month": "2026-08",
+   "method_version": "regional-0.1.0",
+   "revision": 1,
+   "published_at": "2026-09-19T22:39:13.600459+00:00"
+  }
+ ]
+}
